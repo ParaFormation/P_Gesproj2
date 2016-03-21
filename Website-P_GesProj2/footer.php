@@ -10,27 +10,28 @@
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+          <h5 class="white-text">P_GesProj2</h5>
+          <p class="grey-text text-lighten-4">Ce site a été créé dans le cadre du projet P_GesProj2 à l'ETML. Ce site utilise le Framework Material Design de Google. </p>
 
 
         </div>
         <div class="col l3 s12">
           <h5 class="white-text">Liens</h5>
           <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
+              <li><a class="white-text" href="index.php">Accueil</a></li>
+              <li><a class="white-text" href="#">Formations</a></li>
+              <li><a class="white-text" href="#">Formateurs</a></li>
           </ul>
         </div>
         <div class="col l3 s12">
           <h5 class="white-text">Contact</h5>
           <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
+              <li><a class="white-text" href="mailto:bijelical@etml.educanet2.ch">Alen Bijelic</a></li>
+              <li><a class="white-text" href="mailto:carvalhoda@etml.educanet2.ch">David Carvalho</a></li>
+              <li><a class="white-text" href="mailto:fernandemi@etml.educanet2.ch">Miguel Fernandes</a></li>
+              <li><a class="white-text" href="mailto:gillieroro@etml.educanet2.ch">Romain Gilliéron</a></li>
+              <li><a class="white-text" href="mailto:taverneyax@etml.educanet2.ch">Axel Taverney</a></li>
+              <li><a class="white-text" href="mailto:voisardth@etml.educanet2.ch">Théodore Voisard</a></li>
           </ul>
         </div>
       </div>

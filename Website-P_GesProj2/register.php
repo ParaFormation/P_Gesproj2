@@ -12,7 +12,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-    <title>Inscription</title>
+    <title>Inscription - P_GesProj2</title>
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -33,28 +33,34 @@ include './login.php';
         <div class="row">
             <form class="col s12">
                 <div class="row">
-
                     <div class="input-field col s12 m6">
                         <i class="material-icons prefix">account_circle</i>
                         <input id="last_name" type="text" class="validate">
-                        <label for="last_name">Last Name</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12 m6">
-                        <i class="mdi-action-lock-outline prefix"></i>
-                        <input id="password" type="password" class="validate">
-                        <label for="password">Password</label>
+                        <label for="last_name">Nom</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m6">
                         <i class="material-icons prefix">email</i>
                         <input id="email" type="email" class="validate">
-                        <label for="email">Email</label>
+                        <label for="email">E-mail</label>
+                    </div>
+                 </div>
+                <div class="row">
+                    <div class="input-field col s12 m6">
+                        <i class="mdi-action-lock-outline prefix"></i>
+                        <input id="password" type="password" class="validate">
+                        <label for="password">Mot de passe</label>
                     </div>
                 </div>
-                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                <div class="row">
+                    <div class="input-field col s12 m6">
+                        <i class="mdi-action-lock-outline prefix"></i>
+                        <input id="confirmPassword" type="password" class="validate">
+                        <label for="confirmPassword">Confirmation mot de passe</label>
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-light blue" type="submit" name="action">S'inscrire
                     <i class="material-icons right">send</i>
                 </button>
             </form>

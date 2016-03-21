@@ -10,7 +10,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>Starter Template - Materialize</title>
+  <title>Accueil - P_GesProj2</title>
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -42,9 +42,36 @@
                 <h5 class="header col s12 light">Naviguer sur notre site grâce au onglets en haut à gauche, inscrivez-vous ou connectez-vous pour suivre une ou plusieurs formations.</h5>
             </div>
         <br><br>
+        <div class="row">
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <h2 class="center light-blue-text"><i class="material-icons">work</i></h2>
+                    <h5 class="center">Formation de Qualité</h5>
 
+                    <p class="light">Nos formations proposées sont encadrées par les meilleurs professeurs du pays. Apprenez avec nos formateurs venus des 4 coins de la Terre !</p>
+                </div>
+            </div>
+
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <h2 class="center light-blue-text"><i class="material-icons">dashboard</i></h2>
+                    <h5 class="center">Une interface épurée</h5>
+
+                    <p class="light">Notre site utilise le Material Design de Google, ce qui vous permet une naviguation fluide et agréable. Disponible également où que vous soyez : sur votre ordinateur ou votre tablette !</p>
+                </div>
+            </div>
+
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <h2 class="center light-blue-text"><i class="material-icons">thumb_up</i></h2>
+                    <h5 class="center">Gérer vos formations</h5>
+
+                    <p class="light"> Grâce à notre système de connexion, vous pouvez gérer vos inscriptions aux formations et/ou en créer de nouvelle ! Si vous êtes un étudiant, connectez-vous et inscrivez-vous à votre formation. </p>
+                </div>
             </div>
         </div>
+        </div>
+    </div>
     <br><br>
 
     <?php
