@@ -5,23 +5,6 @@
  * Summary: Navbar of the site
  */
 ?>
-
-<!-- Dropdown Structure -->
-<ul id="dropdownFormations" class="dropdown-content">
-    <li><a href="#">#1</a></li>
-    <li class="divider"></li>
-    <li><a href="#">#2</a></li>
-    <li class="divider"></li>
-    <li><a href="#">#3</a></li>
-</ul>
-<ul id="dropdownFormators" class="dropdown-content">
-    <li><a href="#">#1</a></li>
-    <li class="divider"></li>
-    <li><a href="#">#2</a></li>
-    <li class="divider"></li>
-    <li><a href="#">#3</a></li>
-</ul>
-<!-- End Dropdown Structure -->
 <!-- Navigation Structure -->
 
     <div class="navbar-fixed">
@@ -32,8 +15,8 @@
                 <ul class="left hide-on-med-and-down">
                     <li><a href="index.php">Accueil</a></li>
                     <!-- Dropdown Trigger -->
-                    <li><a class="dropdown-button" href="#" data-activates="dropdownFormations">Formations<i class="material-icons right">arrow_drop_down</i></a></li>
-                    <li><a class="dropdown-button" href="#" data-activates="dropdownFormators">Formateurs<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a href="formations.php">Formations</a></li>
+                    <li><a href="trainers.php">Formateurs</a></li>
                 </ul>
                 <ul class="right hide-on-med-and-down">
                     <li><a class="modal-trigger waves-effect waves-light btn light-blue accent-3" href="#modal1">Connexion</a></li>

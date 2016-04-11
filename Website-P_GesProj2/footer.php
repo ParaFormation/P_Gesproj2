@@ -4,6 +4,9 @@
  * Date: 21.03.2016
  * Summary: 
  */
+
+include './login.php';
+
 ?>
 
 <footer class="page-footer blue">
@@ -19,7 +22,7 @@
           <h5 class="white-text">Liens</h5>
           <ul>
               <li><a class="white-text" href="index.php">Accueil</a></li>
-              <li><a class="white-text" href="#">Formations</a></li>
+              <li><a class="white-text" href="formations.php">Formations</a></li>
               <li><a class="white-text" href="#">Formateurs</a></li>
           </ul>
         </div>
@@ -38,7 +41,7 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-        Copyright © 2016
+        Copyright © 2016 CIN2A
       </div>
     </div>
   </footer>
