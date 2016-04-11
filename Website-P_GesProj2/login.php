@@ -13,24 +13,24 @@
         <h1>Connection</h1>
         <h5>Vous n'avez pas de compte? Inscrivez-vous <a href="register.php">ici</a></h5>
         <div class="row">
-            <form class="col s12">
+            <form class="col s12" action="checkLogin.php" method="post">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="login" type="text" class="validate">
-                        <label for="login">Login</label>
+                        <input id="username" name="username" type="text" class="validate" required>
+                        <label for="username">Username</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="password" type="password" class="validate">
+                        <input id="password" name="password" type="password" class="validate" required>
                         <label for="password">Password</label>
                     </div>
                 </div>
+                <div >
+                    <button type="submit" class="modal-action waves-effect blue btn-flat white-text">Se connecter</button>
+                    <button class="modal-action modal-close waves-effect waves-red  btn-flat ">Annuler</button>
+                </div>
             </form>
         </div>
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect blue btn-flat white-text">Se connecter</a>
-        <a href="#!" class="modal-action modal-close waves-effect waves-red  btn-flat ">Annuler</a>
     </div>
 </div>
