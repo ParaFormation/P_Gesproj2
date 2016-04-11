@@ -42,7 +42,7 @@
                 <h5 class="header col s12 light">Naviguer sur notre site grâce au onglets en haut à gauche, inscrivez-vous ou connectez-vous pour suivre une ou plusieurs formations.</h5>
             </div>
         <br><br>
-        <div class="row">
+        <div class="row center">
             <div class="col s12 m4">
                 <div class="icon-block">
                     <h2 class="center light-blue-text"><i class="material-icons">work</i></h2>
@@ -57,7 +57,7 @@
                     <h2 class="center light-blue-text"><i class="material-icons">dashboard</i></h2>
                     <h5 class="center">Une interface épurée</h5>
 
-                    <p class="light">Notre site utilise le Material Design de Google, ce qui vous permet une naviguation fluide et agréable. Disponible également où que vous soyez : sur votre ordinateur ou votre tablette !</p>
+                    <p class="light">Notre site utilise le Material Design de Google, ce qui vous permet une naviguation fluide et agréable. Disponible également où que vous soyez : sur votre ordinateur, votre tablette et même votre smartphone!</p>
                 </div>
             </div>
 
