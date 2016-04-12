@@ -14,19 +14,30 @@
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="left hide-on-med-and-down">
                     <li><a href="index.php">Accueil</a></li>
-                    <!-- Dropdown Trigger -->
                     <li><a href="formations.php">Formations</a></li>
                     <li><a href="trainers.php">Formateurs</a></li>
+                    <li><a href="about.php">A propos</a></li>
                 </ul>
                 <ul class="right hide-on-med-and-down">
-                    <li><a class="modal-trigger waves-effect waves-light btn light-blue accent-3" href="#modal1">Connexion</a></li>
-                    <li><a class="waves-effect waves-light btn grey accent-3" href="register.php">Inscription</a></li>
+                    <?php
+                    if (isset($_SESSION['user']))
+                    {
+                        echo '<li><a class="btn grey lighten-1">'.$_SESSION['user'].'</a></li>';
+                        echo '<li><a href="logoutFunction.php"><i class="material-icons">power_settings_new</i></a></li>';
+                    }
+                    else
+                    {
+                        echo'<li><a class="btn grey lighten-1" href="registerPage.php">Inscription</a></li>';
+                        echo'<li><a class="btn light-blue" href="loginPage.php">Connexion</a></li>';
+                    }
+                    ?>
 
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
                     <li><a href="index.php">Accueil</a></li>
-                    <li><a href="#">Formations</a></li>
-                    <li><a href="#">Formateurs</a></li>
+                    <li><a href="formations.php">Formations</a></li>
+                    <li><a href="trainers.php">Formateurs</a></li>
+                    <li><a href="about.php">A propos</a></li>
                     <li class="divider"></li>
                     <li><a class="modal-trigger waves-effect waves-light" href="#modal1">Connexion</a></li>
                     <li><a class="waves-effect waves-light" href="register.php">Inscription</a></li>

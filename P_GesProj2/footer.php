@@ -5,8 +5,6 @@
  * Summary: 
  */
 
-include './login.php';
-
 ?>
 
 <footer class="page-footer blue">

@@ -35,7 +35,7 @@
   <div class="container">
     <div class="section">
         <?php
-        include 'login.php';
+        include 'loginModal.php';
         ?>
             <div class="row center">
                 <h5 class="header col s12 light">Bienvenue sur notre site de formation  !</h5>
