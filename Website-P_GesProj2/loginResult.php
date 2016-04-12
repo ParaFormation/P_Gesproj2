@@ -31,12 +31,12 @@ session_start();
         if($_GET['res'] == 0)
         {
             echo'<div class="card-panel white-text teal lighten-2"><h4>La connexion réussie</h4></div>';
-            echo'<div class="center"><a class="modal-trigger waves-effect waves-light btn teal lighten-2" href="index.php">Retour à la page d\'accueil</a></div>';
+            echo'<div class="center"><a class="waves-effect waves-light btn teal lighten-2" href="index.php">Retour à la page d\'accueil</a></div>';
         }
         else
         {
             echo'<div class="card-panel white-text red darken-1"><h4>Une erreur est survenue lors de la connexion</h4></div>';
-            echo'<div class="center"><a class="modal-trigger waves-effect waves-light btn red darken-1" href="login.php">Retour à la page d\'inscription</a></div>';
+            echo'<div class="center"><a class="waves-effect waves-light btn red darken-1" href="index.php">Retour à la page d\'accueil</a></div>';
 
         }
         ?>

@@ -50,7 +50,49 @@ class gesprojClass
         }
     }
 
+    public function Register($username,$password)
+    {
+        //Check if the username already exists
+        $stmt = $this->dbh->prepare("SELECT * FROM t_user WHERE useUsername='$username'");
+        $stmt->execute();
+        $count=$stmt->rowCount();
 
+        //If the username doesn't exixt
+        if($count == 0)
+        {
+            $passwordEnc=password_hash($password,PASSWORD_DEFAULT);
+
+            //Query to create a new user (username & password)
+            $newUser = "INSERT INTO t_user(
+                        useUsername,
+                        usePassword
+                        ) VALUES (
+                        :useUsername,
+                        :usePassword
+                        )";
+
+            //Prepare the query $newUser
+            $stmt = $this->dbh->prepare($newUser);
+
+            //Bind the parameter $useUsername & userPassword
+            $stmt->bindParam(':useUsername',$username, PDO::PARAM_STR);
+            $stmt->bindParam(':usePassword', $passwordEnc, PDO::PARAM_STR);
+
+            //Execute the query
+            $stmt->execute();
+
+            //redirect to the "Success" page
+            header("location:registerResult.php?res=0");
+        }
+        else
+        {
+            //Redirect to the "Failed" page
+            header("location:registerResult.php?res=1");
+        }
+
+        //Kill the connection to database
+        unset($this->dbh);
+    }
 
 }
 ?>

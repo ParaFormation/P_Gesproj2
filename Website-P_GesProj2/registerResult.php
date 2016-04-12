@@ -28,15 +28,15 @@
 		
 		if(isset($_GET['res']))
 		{
-			if($_GET['res'] == 1)
+			if($_GET['res'] == 0)
 			{
 				echo('<div class="card-panel white-text teal lighten-2"><h4>Un nouvel utilisateur a été ajouté avec succès !</h4></div>
-					  <div class="center" ><a class="modal-trigger waves-effect waves-light btn teal lighten-2" href="index.php">Retour à la page d\'accueil</a></div>');
+					  <div class="center" ><a class="waves-effect waves-light btn teal lighten-2" href="index.php">Retour à la page d\'accueil</a></div>');
 			}
-			else if($_GET['res'] == 0)
+			else if($_GET['res'] == 1)
 			{
 				echo('<div class="card-panel white-text red darken-1"><h4>Une erreur est survenue lors de l\'ajout de l\'utilisateur.</h4></div>
-					<div class="center" ><a class="modal-trigger waves-effect waves-light btn red darken-1" href="register.php">Retour à la page d\'inscription</a></div>');
+					<div class="center" ><a class="waves-effect waves-light btn red darken-1" href="register.php">Retour à la page d\'inscription</a></div>');
 			}
 			else
 			{
