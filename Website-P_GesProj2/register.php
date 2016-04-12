@@ -36,21 +36,21 @@ include './login.php';
                 <div class="row">
                     <div class="input-field col s12 m6">
                         <i class="material-icons prefix">account_circle</i>
-                        <input name="username" id="username" type="text" class="validate">
+                        <input name="username" id="username" type="text" class="validate" required>
                         <label for="username">Nom d'utilisateur</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m6">
                         <i class="mdi-action-lock-outline prefix"></i>
-                        <input id="password" name="password" type="password" class="validate">
+                        <input id="password" name="password" type="password" class="validate" required>
                         <label for="password">Mot de passe</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m6">
                         <i class="mdi-action-lock-outline prefix"></i>
-                        <input id="confirmPassword" name="confirmPassword" type="password" class="validate">
+                        <input id="confirmPassword" name="confirmPassword" type="password" class="validate" required>
                         <label for="confirmPassword">Confirmation mot de passe</label>
                     </div>
                 </div>
