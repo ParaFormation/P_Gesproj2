@@ -25,7 +25,7 @@
 <?php
 include './navbar.php';
 
-include './login.php';
+include './loginModal.php';
 ?>
 
 <div class="container">
