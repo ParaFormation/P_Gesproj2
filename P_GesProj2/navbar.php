@@ -27,8 +27,8 @@
                     }
                     else
                     {
-                        echo'<li><a class="btn grey lighten-1" href="registerPage.php">Inscription</a></li>';
-                        echo'<li><a class="btn light-blue" href="loginPage.php">Connexion</a></li>';
+                        echo'<li><a class="btn grey lighten-1" href="register.php">Inscription</a></li>';
+                        echo'<li><a class="modal-trigger btn light-blue" href="#modal1">Connexion</a></li>';
                     }
                     ?>
 
