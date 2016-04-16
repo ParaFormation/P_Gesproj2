@@ -1,4 +1,7 @@
 <?php
+session_start();
+?>
+<?php
 /**
  * Created by PhpStorm.
  * User: taverneyax

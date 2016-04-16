@@ -10,7 +10,7 @@ class gesprojClass
      * Default constructor
      */
     public function __construct() {
-        $this->dbh = new PDO('mysql:host=localhost;dbname=db_gesproj2;charset=utf8',"gesproj2", "gesproj2admin",array(PDO::ATTR_PERSISTENT => true,PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+        $this->dbh = new PDO('mysql:host=localhost;dbname=paradisi_db_gesproj2;charset=utf8',"paradisi_gesproj", "gesproj2admin",array(PDO::ATTR_PERSISTENT => true,PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
     }
 
     /**
@@ -42,11 +42,26 @@ class gesprojClass
             else
             {
                 header("location:loginResult.php?res=1");
+
             }
         }
         else
         {
             header("location:loginResult.php?res=1");
+
+        }
+    }
+
+    public function Logout()
+    {
+        if (isset($_SESSION['user']))
+        {
+            session_destroy();
+            header("location:logoutResult.php?res=0");
+        }
+        else
+        {
+            header("location:logoutResult.php?res=1");
         }
     }
 
@@ -83,6 +98,7 @@ class gesprojClass
 
             //redirect to the "Success" page
             header("location:registerResult.php?res=0");
+
         }
         else
         {

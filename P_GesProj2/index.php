@@ -1,4 +1,7 @@
 <?php
+session_start();
+?>
+<?php
 /**
  * User: bijelical
  * Date: 21.03.2016

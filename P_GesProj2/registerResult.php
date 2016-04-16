@@ -1,4 +1,7 @@
 <?php
+session_start();
+?>
+<?php
 /**
  * User: bijelical
  * Date: 21.03.2016
@@ -24,7 +27,7 @@
  <div class="container">
     <div class="section">
         <?php
-        include 'login.php';
+        include 'loginModal.php';
 		
 		if(isset($_GET['res']))
 		{
