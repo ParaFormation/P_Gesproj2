@@ -1,4 +1,6 @@
 <?php
+session_start();
+
     include "gesprojClass.php";
     if (isset($_POST['username'], $_POST['confirmPassword'], $_POST['password']))
     {
