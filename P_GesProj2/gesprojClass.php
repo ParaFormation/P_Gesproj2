@@ -10,7 +10,7 @@ class gesprojClass
      * Default constructor
      */
     public function __construct() {
-        $this->dbh = new PDO('mysql:host=localhost;dbname=paradisi_db_gesproj2;charset=utf8',"paradisi_gesproj", "gesproj2admin",array(PDO::ATTR_PERSISTENT => true,PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+        $this->dbh = new PDO('mysql:host=localhost;dbname=db_gesproj2;charset=utf8',"gesproj2", "gesproj2admin",array(PDO::ATTR_PERSISTENT => true,PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
     }
 
     /**
