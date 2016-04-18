@@ -39,8 +39,18 @@
                     <li><a href="trainers.php">Formateurs</a></li>
                     <li><a href="about.php">A propos</a></li>
                     <li class="divider"></li>
-                    <li><a class="modal-trigger waves-effect waves-light" href="#modal1">Connexion</a></li>
-                    <li><a class="waves-effect waves-light" href="register.php">Inscription</a></li>
+                    <?php
+                    if (isset($_SESSION['user']))
+                    {
+                        echo '<li><a href="logoutFunction.php">Se déconnecter</a></li>';
+                    }
+                    else
+                    {
+                        echo'<li><a class="modal-trigger waves-effect waves-light" href="#modal1">Connexion</a></li>
+                             <li><a class="waves-effect waves-light" href="register.php">Inscription</a></li>';
+                    }
+                    ?>
+
                 </ul>
             </div>
         </nav>
