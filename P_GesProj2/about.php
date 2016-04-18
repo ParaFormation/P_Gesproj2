@@ -21,6 +21,7 @@ session_start();
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
+<main>
 <?php
 include './navbar.php';
 ?>
@@ -43,6 +44,9 @@ include './navbar.php';
                 </div>
             </div>
         </div>
+        <div class="row maps">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3497.177980972551!2d6.617063879902957!3d46.523213349119445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c31d68ec34665%3A0x1247716e1a4ec528!2sETML!5e1!3m2!1sfr!2sch!4v1460967109831" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
     </div>
 </div>
 <br><br>
@@ -56,6 +60,6 @@ include 'footer.php';
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="js/materialize.js"></script>
 <script src="js/init.js"></script>
-
+</main>
 </body>
 </html>
