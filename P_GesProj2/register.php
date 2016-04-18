@@ -10,7 +10,7 @@ session_start();
  */
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
@@ -40,7 +40,6 @@ include './gesprojClass.php';
 include './navbar.php';
 include './loginModal.php';
 ?>
-
 <div class="container">
     <div class="section">
         <?php
@@ -53,7 +52,7 @@ include './loginModal.php';
             echo('
                     <h1>Inscription</h1>
                     <div class="row">
-                        <form class="col s12" method="POST" action="checkRegister.php">
+                        <form class="col s12" onsubmit="return checkPasswords()" method="POST" action="checkRegister.php">
                             <div class="row">
                                 <div class="input-field col s12 m6">
                                     <i class="material-icons prefix">account_circle</i>
@@ -64,15 +63,15 @@ include './loginModal.php';
                             <div class="row">
                                 <div class="input-field col s12 m6">
                                     <i class="mdi-action-lock-outline prefix"></i>
-                                    <input id="password" name="password" type="password" class="validate" required>
-                                    <label for="password">Mot de passe</label>
+                                    <input id="password1" name="password1" type="password" class="validate" required>
+                                    <label for="password1">Mot de passe</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12 m6">
                                     <i class="mdi-action-lock-outline prefix"></i>
-                                    <input id="confirmPassword" name="confirmPassword" type="password" class="validate" required>
-                                    <label for="confirmPassword">Confirmation mot de passe</label>
+                                    <input id="passwordConfirm" name="passwordConfirm" type="password" class="validate" required>
+                                    <label for="passwordConfirm">Confirmation mot de passe</label>
                                 </div>
                             </div>
                             <button class="btn waves-effect waves-light blue" type="submit" name="action">S\'inscrire
