@@ -134,7 +134,7 @@ class gesprojClass
     public function getAllTrainers()
     {
         //Prepare the select request
-        $stmt = $this->dbh->prepare('SELECT traName,forLastName,forFirstName,forEmail,forPhone,forQualifications,idFormer,idTraining FROM t_former,t_training WHERE idFormer = fkFormer1 OR idFormer = fkFormer2  GROUP BY idFormer ORDER BY idTraining');
+        $stmt = $this->dbh->prepare('SELECT traName,forLastName,forFirstName,forEmail,forPhone,forQualifications,idFormer,idTraining FROM t_former,t_training WHERE idFormer = fkFormer1 GROUP BY idFormer ORDER BY idTraining');
 
         //Execute the request
         $stmt->execute();
