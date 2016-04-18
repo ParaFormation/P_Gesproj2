@@ -24,6 +24,7 @@
                     {
                         echo '<li><a class="btn grey lighten-1 hide-button">'.$_SESSION['user'].'</a></li>';
                         echo '<li><a href="logoutFunction.php" class="hide-button"><i class="material-icons">power_settings_new</i></a></li>';
+                        echo '<li><a href="accountTypeSelection.php" class="hide-button"><i class="material-icons">settings</i></a></li>';
                     }
                     else
                     {
@@ -43,6 +44,7 @@
                     if (isset($_SESSION['user']))
                     {
                         echo'<li><a href="logoutFunction.php">Déconnexion</a></li>';
+                        echo'<li ><a class="waves-effect waves-light" href = "accountTypeSelection.php">Réglages</a ></li>';
                     }
                     else
                     {
