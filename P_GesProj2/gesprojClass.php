@@ -97,7 +97,7 @@ class gesprojClass
             $stmt->execute();
 
             //redirect to the "Success" page
-            header("location:registerResult.php?res=0");
+            header("location:index.php?resINS=0");
 
         }
         else
@@ -108,6 +108,42 @@ class gesprojClass
 
         //Kill the connection to database
         unset($this->dbh);
+    }
+
+    /**
+     * Display formation in the html
+     */
+    public function getAllFormations()
+    {
+        //Prepare the select request
+        $stmt = $this->dbh->prepare('SELECT forLastName AS former1, fkFormer2 AS form2,idTraining,traName,traDescription,traStartDate,traEndDate,traPeriodicity,traPrice,traLocality,traMinParticipants,traMaxParticipants FROM t_former,t_training WHERE fkFormer1 = idFormer ORDER BY idTraining');
+
+        //Execute the request
+        $stmt->execute();
+
+        //Get the result of the request in an array
+        $formations = $stmt->fetchAll();
+
+        //return formations
+        return $formations;
+    }
+
+    /**
+     * Display trainers in the html
+     */
+    public function getAllTrainers()
+    {
+        //Prepare the select request
+        $stmt = $this->dbh->prepare('SELECT traName,forLastName,forFirstName,forEmail,forPhone,forQualifications,idFormer,idTraining FROM t_former,t_training WHERE idFormer = fkFormer1 OR idFormer = fkFormer2  GROUP BY idFormer ORDER BY idTraining');
+
+        //Execute the request
+        $stmt->execute();
+
+        //Get the result of the request in an array
+        $formers = $stmt->fetchAll();
+
+        //Return the list
+        return $formers;
     }
 
 }
