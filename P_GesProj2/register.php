@@ -20,13 +20,24 @@ session_start();
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-	<?php include './gesprojClass.php'; ?>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="./js/jsGesProj.js"></script>
+    <script src="./js/materialize.js"></script>
 </head>
 
 <body>
 <?php
+if(isset($_GET['resINS']) && ($_GET['resINS']) == 1)
+{
+    echo '<script type="text/javascript">'
+    , 'connexionKO("Cet utilisateur existe déjà !");'
+    , '</script>'
+    ;
+}
+?>
+<?php
+include './gesprojClass.php';
 include './navbar.php';
-
 include './loginModal.php';
 ?>
 
