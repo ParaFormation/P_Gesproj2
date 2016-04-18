@@ -35,17 +35,15 @@ include './navbar.php';
         <?php
         include 'loginModal.php';
         ?>
-        <div class="row">
-            <div class="col s12 m6">
-                <div class="flow-text">
+        <div class="row center">
+            <div class="col s12 m12">
+                <p class="flow-text ">
                     Créé en 2016, ce projet doit aboutir sur un site Web permettant de gérer des listes de formations avec des formateurs et participants.
                     Le projet est réalisé par des apprentis informaticiens de l'ETML, actuellement en 2ème année.<br>
                     Pour tout renseignement, veuillez nous contacter via les liens e-mail ci-dessous.<br>
-                </div>
+                </p>
             </div>
-        </div>
-        <div class="row maps">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3497.177980972551!2d6.617063879902957!3d46.523213349119445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c31d68ec34665%3A0x1247716e1a4ec528!2sETML!5e1!3m2!1sfr!2sch!4v1460967109831" frameborder="0" style="border:0" allowfullscreen></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2473.423747275303!2d6.614519116280114!3d46.52390249840872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c31d68ec34665%3A0x1247716e1a4ec528!2sETML!5e1!3m2!1sfr!2sch!4v1455288539642" class="col s12 m12" height="450"  frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
     </div>
 </div>
