@@ -52,7 +52,7 @@ main {
     height: 75% !important;
 }
 
-@media only screen and (min-width: 1401px) {
+@media only screen and (min-width: 1400px) {
     nav a.button-collapse {
         display: none;
     }
