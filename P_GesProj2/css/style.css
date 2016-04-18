@@ -36,3 +36,30 @@ main {
 .brand-logo{
     margin-top:0.5%;
 }
+
+
+.maps {
+    position: relative;
+    padding-bottom: 75%; // This is the aspect ratio
+    height: 0;
+    overflow: hidden;
+}
+.maps iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 75% !important;
+}
+
+@media only screen and (min-width: 1401px) {
+    nav a.button-collapse {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    nav a.hide-button {
+        display:none;
+    }
+}
