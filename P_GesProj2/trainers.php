@@ -1,13 +1,4 @@
-<?php
-session_start();
-?>
-<?php
-/**
- * Created by PhpStorm.
- * User: bijelical
- * Date: 11.04.2016
- */
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +11,7 @@ session_start();
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <?php include'./gesprojClass.php'; ?>
 </head>
 
 <body>
@@ -27,6 +19,28 @@ session_start();
 include './navbar.php';
 
 include './loginModal.php';
+
+$trainer = new gesprojClass();
+$trainerList = $trainer->getAllTrainers();
+$HTML_List = "";
+
+foreach($trainerList as $trainer)
+{
+    $HTML_List = $HTML_List .  '<li>
+                                    <div class="collapsible-header"><i class="material-icons">filter_drama</i>' . $trainer['forFirstName']. ' ' . $trainer['forLastName'] . '</div>
+                                    <div class="collapsible-body">
+                                        <ul></br>
+                                            <div class="margin-ul">
+                                                <li><strong>Email : </strong>' .$trainer['forEmail']. '</li></br>
+                                                <li><strong>Téléphone : </strong>' .$trainer['forPhone']. '</li></br>
+                                                <li><strong>Qualifications : </strong>' .$trainer['forQualifications']. '</li></br>
+                                                <li><strong>Formations : </strong><a href="./formations.php">'.$trainer['traName'].'</a></li></br>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                </li>';
+}
+
 ?>
 
 <div class="container">
@@ -34,12 +48,7 @@ include './loginModal.php';
         <h1>Formateurs</h1>
         <div class="row">
             <ul class="collapsible" data-collapsible="accordion">
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">filter_drama</i>Nero Petros</div>
-                    <div class="collapsible-body">
-                        <p>Informatique</p>
-                    </div>
-                </li>
+                <?=$HTML_List?>
             </ul>
         </div>
     </div>
