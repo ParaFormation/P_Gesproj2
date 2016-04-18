@@ -37,17 +37,17 @@ class gesprojClass
             {
                 $_SESSION['user'] = $username;
 
-                header("location:loginResult.php?res=0");
+                header("location:index.php?resON=0");
             }
             else
             {
-                header("location:loginResult.php?res=1");
+                header("location:index.php?resON=1");
 
             }
         }
         else
         {
-            header("location:loginResult.php?res=1");
+            header("location:index.php?resON=2");
 
         }
     }
@@ -57,11 +57,11 @@ class gesprojClass
         if (isset($_SESSION['user']))
         {
             session_destroy();
-            header("location:logoutResult.php?res=0");
+            header("location:index.php?resOFF=0");
         }
         else
         {
-            header("location:logoutResult.php?res=1");
+            header("location:index.php?resOFF=1");
         }
     }
 
@@ -103,7 +103,7 @@ class gesprojClass
         else
         {
             //Redirect to the "Failed" page
-            header("location:registerResult.php?res=1");
+            header("location:register.php?resINS=1");
         }
 
         //Kill the connection to database
