@@ -1,8 +1,0 @@
-
-//Logo à utiliser
-<i class="material-icons">assessment</i>
-
-
-//Nouveau bouton
-<br><a class="waves-effect waves-light btn blue right"><i class="material-icons right">note_add</i>S'inscrire</a>
-<br>
