@@ -19,22 +19,82 @@ session_start();
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="./js/jsGesProj.js"></script>
+    <script src="./js/materialize.js"></script>
 </head>
 <body>
     <?php
+        if(isset($_GET['resINS']) && ($_GET['resINS'] == 0))
+        {
+            echo '<script type="text/javascript">'
+            , 'connexionOK("Inscription réussie !");'
+            , '</script>'
+            ;
+        }
+        else {
+            if (isset($_GET['resOFF']) && ($_GET['resOFF']) == 0)
+            {
+                echo '<script type="text/javascript">'
+                , 'connexionOK("Déconnexion réussie !");'
+                , '</script>';
+            }
+            else
+            {
+                if (isset($_GET['resOFF']) && ($_GET['resOFF']) == 1) {
+                    echo '<script type="text/javascript">'
+                    , 'connexionKO("Déconnexion non réussie !");'
+                    , '</script>';
+                }
+                else
+                {
+                    if(isset($_GET['resON']) && ($_GET['resON']) == 0)
+                    {
+                        echo '<script type="text/javascript">'
+                        , 'connexionOK("Connexion réussie !");'
+                        , '</script>'
+                        ;
+                    }
+                    else
+                    {
+                        if(isset($_GET['resON']) && ($_GET['resON']) == 1)
+                        {
+                            echo '<script type="text/javascript">'
+                            , 'connexionKO("Mot de passe erroné !");'
+                            , '</script>'
+                            ;
+                        }
+                        else
+                        {
+                            if(isset($_GET['resON']) && ($_GET['resON']) == 2)
+                            {
+                                echo '<script type="text/javascript">'
+                                , 'connexionKO("Utilisateur inexistant !");'
+                                , '</script>'
+                                ;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    ?>
+
+    <?php
         include './navbar.php';
     ?>
-<div id="index-banner" class="parallax-container">
-    <div class="section no-pad-bot">
-        <div class="container">
-            <br><br>
-            <h1 class="header center blue-text">Accueil</h1>
-            <br><br>
+    <div id="index-banner" class="parallax-container">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <br><br>
+                <h1 class="header center blue-text">Accueil</h1>
+                <br><br>
 
+            </div>
         </div>
+        <div class="parallax"><img src="images/image.jpg" alt="Unsplashed background img 1"></div>
     </div>
-    <div class="parallax"><img src="images/image.jpg" alt="Unsplashed background img 1"></div>
-</div>
   <div class="container">
     <div class="section">
         <?php
@@ -83,8 +143,6 @@ session_start();
 
 
   <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
 
   </body>
