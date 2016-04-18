@@ -57,8 +57,7 @@ include './loginModal.php';
                                         <li><strong>Nombre de participant min. : </strong>' .$form['traMinParticipants']. '</li></br>
                                         <li><strong>Nombre de participant max. : </strong>' .$form['traMaxParticipants']. '</li></br>
                                         <li><strong>Formateur : </strong><a href="./trainers.php">' .$form['former1']. '</a></li></br>
-                                        <li><a class="waves-effect waves-light btn blue center"><i class="material-icons right">note_add</i>S\'inscrire</a></li><br>
-
+                                        <li><a class="btn tooltipped waves-effect waves-light btn light-blue accent-3" data-position="right" data-delay="50" data-tooltip="En cours de développement"><i class="material-icons right">note_add</i>S\'inscrire</a></li><br>
                                     </div>
                                 </ul>
                             </div>
