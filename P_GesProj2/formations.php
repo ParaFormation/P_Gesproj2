@@ -1,10 +1,7 @@
 <?php
-session_start();
-?>
-<?php
 /**
  * Created by PhpStorm.
- * User: taverneyax
+ * User: voisardth
  * Date: 21.03.2016
  * Time: 10:13
  */
@@ -21,6 +18,7 @@ session_start();
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <?php include'./gesprojClass.php'; ?>
 </head>
 
 <body>
@@ -35,26 +33,38 @@ include './loginModal.php';
         <h1>Formations</h1>
         <div class="row">
             <ul class="collapsible" data-collapsible="accordion">
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">assessment</i>Informatique</div>
-                    <div class="collapsible-body">
-                        <p>
-                            <br>Formateurs: Alen Bijelic
-                            <br><a class="waves-effect waves-light btn blue right"><i class="material-icons right">note_add</i>S'inscrire</a>
-                            <br>
-                        </p>
-                    </div>
-                </li>
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">assessment</i>Bois</div>
-                    <div class="collapsible-body">
-                        <p>
-                            <br>Formateurs: Alen Bijelic
-                            <br><a class="waves-effect waves-light btn blue right"><i class="material-icons right">note_add</i>S'inscrire</a>
-                            <br>
-                        </p>
-                    </div>
-                </li>
+                    <?php
+                    $gesprojClass = new gesprojClass();
+                    $formations = $gesprojClass->getAllFormations();
+
+
+                    foreach($formations as $form)
+                    {
+                        $li = '<li>
+                            <div class="collapsible-header"><i class="material-icons">filter_drama</i>' . $form['traName'] . '</div>
+                            <div class="collapsible-body">
+                                <ul></br>
+                                    <div class="margin-ul">
+                                        <li><strong>Description : </strong>' .$form['traDescription']. '</li></br>
+                                        <li><strong>Date de début : </strong>' .$form['traStartDate']. '</li></br>
+                                        <li><strong>Date de fin : </strong>' .$form['traEndDate']. '</li></br>
+                                        <li><strong>Périodicité : </strong>' .$form['traPeriodicity']. '</li></br>
+                                        <li><strong>Prix : </strong>' .$form['traPrice']. '.-</li></br>
+                                        <li><strong>Lieu : </strong>' .$form['traLocality']. '</li></br>
+                                        <li><strong>Nombre de participant min. : </strong>' .$form['traMinParticipants']. '</li></br>
+                                        <li><strong>Nombre de participant max. : </strong>' .$form['traMaxParticipants']. '</li></br>
+                                        <li><strong>Formateur : </strong><a href="./trainers.php">' .$form['former1']. '</a></li></br>
+                                        <li><a class="waves-effect waves-light btn blue center"><i class="material-icons right">note_add</i>S\'inscrire</a></li><br>
+
+                                    </div>
+                                </ul>
+                            </div>
+                        </li>';
+
+                        echo($li);;
+                    }
+
+                    ?>
             </ul>
         </div>
     </div>
