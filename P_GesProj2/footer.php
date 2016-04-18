@@ -12,7 +12,7 @@
       <div class="row">
         <div class="col l6 s12">
           <h5 class="white-text">P_GesProj2</h5>
-          <p class="grey-text text-lighten-4">Ce site a été créé dans le cadre du projet P_GesProj2 à l'ETML. Ce site utilise le Framework Material Design de Google. </p>
+          <p class="grey-text text-lighten-4">Ce site a été créé dans le cadre du projet P_GesProj2 à l'ETML. Ce site utilise le Framework Materialize. </p>
 
 
         </div>
