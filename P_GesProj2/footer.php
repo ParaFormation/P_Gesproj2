@@ -21,7 +21,20 @@
           <ul>
               <li><a class="white-text" href="index.php">Accueil</a></li>
               <li><a class="white-text" href="formations.php">Formations</a></li>
-              <li><a class="white-text" href="#">Formateurs</a></li>
+              <li><a class="white-text" href="trainers.php">Formateurs</a></li>
+              <?php
+              if (isset($_SESSION['user']))
+              {
+                  echo '<li><a class="white-text" href="logoutFunction.php">Déconnexion</a></li>';
+              }
+              else
+              {
+                  echo'<li><a class="white-text modal-trigger" href="#modal1">Connexion</a></li>';
+                  echo'<li><a class="white-text" href="register.php">Inscription</a></li>';
+              }
+              ?>
+
+
           </ul>
         </div>
         <div class="col l3 s12">

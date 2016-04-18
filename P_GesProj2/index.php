@@ -41,8 +41,8 @@ session_start();
         include 'loginModal.php';
         ?>
             <div class="row center">
-                <h5 class="header col s12 light">Bienvenue sur notre site de formation  !</h5>
-                <h5 class="header col s12 light">Naviguer sur notre site grâce au onglets en haut à gauche, inscrivez-vous ou connectez-vous pour suivre une ou plusieurs formations.</h5>
+                <h5 class="header col s12 light">Bienvenue sur notre site de formation !</h5>
+                <h5 class="header col s12 light">Naviguez sur notre site grâce au onglets en haut à gauche, inscrivez-vous ou connectez-vous pour suivre une ou plusieurs formations. Visionnez également les formateurs disponibles.</h5>
             </div>
         <br><br>
         <div class="row center">
@@ -60,7 +60,7 @@ session_start();
                     <h2 class="center light-blue-text"><i class="material-icons">dashboard</i></h2>
                     <h5 class="center">Une interface épurée</h5>
 
-                    <p class="light">Notre site utilise le Material Design de Google, ce qui vous permet une naviguation fluide et agréable. Disponible également où que vous soyez : sur votre ordinateur, votre tablette et même votre smartphone!</p>
+                    <p class="light">Notre site utilise le Framework Materialize, ce qui vous permet une naviguation fluide et agréable. Disponible également où que vous soyez : sur votre ordinateur, votre tablette et même votre smartphone!</p>
                 </div>
             </div>
 
