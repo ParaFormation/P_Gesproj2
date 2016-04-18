@@ -9796,9 +9796,9 @@ select {
 }
 
 .side-nav li {
-  float: none;
-  padding: 0 15px;
-  line-height: 64px;
+    float: none;
+    line-height: 64px;
+    padding: 0 15px;
 }
 
 .side-nav li:hover, .side-nav li.active {
