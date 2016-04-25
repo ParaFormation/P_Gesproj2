@@ -36,7 +36,7 @@ session_start();
 		<div class="section">
 			<h3>Profil formateur</h3></br></br>
 				<div class="row">
-					<form class="col s12 m12" method="POST" onsubmit="return checkPasswords() action="post/postTeachConfig.php">';
+					<form class="col s12 m12" method="POST" onsubmit="return checkPasswords()" action="post/postTeachConfig.php">';
 					if($newUser->checkAlreadyRegistered(2) == false)
 					{
                         echo'
