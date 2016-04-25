@@ -23,23 +23,32 @@ session_start();
 <body>
 <main>
 	<!-- Navbar -->
-    <?php include './navbar.php'; ?>
-	
-	<!-- Content section -->
-	<div class="container">	
-		<div class="row">
-			<div class="col s12 m12 center">
-				<h4>Qui êtes vous ?</h4>
-			</div>
-        </div>
-		<div class="row">
-			<div class="col s12 m12 center">
-				<a href="./addStudentInfos.php" class="waves-effect waves-light btn"><i class="material-icons left">assignment_ind</i>Élève</a>
-				<a  href="./addTeacherInfos.php" class="waves-effect waves-light btn"><i class="material-icons left">perm_identity</i>Formateur</a>
-			</div>
-		</div>
-	</div>
-	
+    <?php
+    include "./gesprojClass.php";
+    $class = new gesprojClass();
+    include './navbar.php';
+    if(isset($_SESSION['user']) && $class->checkAlreadyRegistered(3) == false)
+    {
+        echo'
+        <div class="container" >
+            <div class="row" >
+                <div class="col s12 m12 center" >
+                    <h4 > Qui êtes vous ?</h4 >
+                </div >
+            </div >
+            <div class="row" >
+                <div class="col s12 m12 center" >
+                    <a href = "./addStudentInfos.php" class="waves-effect waves-light btn" ><i class="material-icons left" > assignment_ind</i > Élève</a >
+                    <a  href = "./addTeacherInfos.php" class="waves-effect waves-light btn" ><i class="material-icons left" > perm_identity</i > Formateur</a >
+                </div >
+            </div >
+        </div >';
+    }
+    else
+    {
+        echo 'Vous n\'êtes pas connecté ou avez déjà choisi votre type de compte !';
+    }
+	?>
 	<!-- Footer -->   
 	<?php include 'footer.php';?>
 		
