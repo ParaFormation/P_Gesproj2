@@ -20,12 +20,12 @@ if(isset($_POST['lastname'],$_POST['firstname'],$_POST['address']))
 else if(isset($_POST['password1']))
 {
     //Get the id of the user
-    $ID = $gesProj->getSessionID();
+    $ID = $newUser->getSessionID();
 
     //Get the new password
     $password = $_POST['password1'];
 
     //Change the password
-    $gesProj->ChangePassword($ID, $password);
+    $newUser->ChangePassword($ID, $password);
 }
 ?>
