@@ -22,9 +22,11 @@ session_start();
 </head>
 <body>
 	<!-- Navbar -->
-    <?php include './navbar.php'; ?>
-	
-	<!-- Form section -->
+    <?php include './navbar.php';
+
+    if(isset($_SESSION['user']))
+    {
+	echo'
 	<div class="container">
 		<div class="section">
 			<h3>Profil formateur</h3></br></br>
@@ -91,7 +93,13 @@ session_start();
 				</form>
 			</div>
 		</div>
-	</div>
+	</div>';}
+    else
+    {
+        echo 'Pas connecté !';
+    }
+
+    ?>
  
 
 	<!-- Footer -->   
