@@ -8,7 +8,7 @@
 <!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
     <li><a href="trainers.php">Nos formateurs</a></li>
-    <li><a href="#!">Confirmer les formateurs</a></li>
+    <li><a href="formerConfirmPage.php">Confirmer les formateurs</a></li>
 </ul>
 
 <!-- Navigation Structure -->
@@ -20,7 +20,7 @@
             <ul class="left hide-on-med-and-down">
                 <li><a href="index.php" class="hide-button">Accueil</a></li>
                 <li><a href="formations.php" class="hide-button">Formations</a></li>
-                <li><a href="#!" data-activates="dropdown1" class="hide-button dropdown-button">Formateurs</a></li>
+                <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Formateurs<i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a href="about.php" class="hide-button">A propos</a></li>
             </ul>
             <ul class="right hide-on-med-and-down">
