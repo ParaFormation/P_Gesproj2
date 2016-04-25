@@ -1,6 +1,7 @@
 <?php
 session_start();
 ?>
+
 <?php
 /**
  * Created by PhpStorm.
@@ -21,14 +22,21 @@ session_start();
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <?php include'./gesprojClass.php'; ?>
 </head>
 
 <body>
 <?php
 include './navbar.php';
-
+include './gesprojClass.php';
 include './loginModal.php';
+
+$gesprojClass = new gesprojClass();
+$formations = $gesprojClass->getAllFormations();
+
+
+if(isset($_GET['idTraining'])) {
+    $gesprojClass->deleteSection($_GET['idTraining']);
+}
 ?>
 
 <div class="container">
@@ -37,10 +45,6 @@ include './loginModal.php';
         <div class="row">
             <ul class="collapsible" data-collapsible="accordion">
                     <?php
-                    $gesprojClass = new gesprojClass();
-                    $formations = $gesprojClass->getAllFormations();
-
-
                     foreach($formations as $form)
                     {
                         $li = '<li>
@@ -57,17 +61,25 @@ include './loginModal.php';
                                         <li><strong>Nombre de participant min. : </strong>' .$form['traMinParticipants']. '</li></br>
                                         <li><strong>Nombre de participant max. : </strong>' .$form['traMaxParticipants']. '</li></br>
                                         <li><strong>Formateur : </strong><a href="./trainers.php">' .$form['former1']. '</a></li></br>
-                                        <li><a class="btn tooltipped waves-effect waves-light btn light-blue accent-3" data-position="right" data-delay="50" data-tooltip="En cours de développement"><i class="material-icons right">note_add</i>S\'inscrire</a></li><br>
+                                        <li><a href="inscription.php?id='. $form['idTraining'] .'" class="btn tooltipped waves-effect waves-light btn light-blue accent-3" data-position="right" data-delay="50" data-tooltip="En cours de développement"><i class="material-icons right">note_add</i>S\'inscrire</a>
+                                        <a href="formations.php?idTraining='. $form['idTraining'] .'" class="btn tooltipped waves-effect waves-red btn red accent-3" data-position="right" data-delay="50" data-tooltip="En cours de développement"><i class="material-icons right">delete</i>Supprimer</a>
+                                        <a href="modifyFormation.php?id='. $form['idTraining'] .'" class="btn tooltipped waves-effect waves-orange btn orange accent-3" data-position="right" data-delay="50" data-tooltip="En cours de développement"><i class="material-icons right">mode_edit</i>Modifier</a></li><br>
+
                                     </div>
                                 </ul>
+
                             </div>
+
                         </li>';
 
                         echo($li);;
+
                     }
 
                     ?>
+
             </ul>
+            <a href="addFormationInfos.php" class="btn tooltipped waves-effect waves-teal btn green accent-3" data-position="right" data-delay="50" data-tooltip="En cours de développement"><i class="material-icons right">add</i>Ajouter</a>
         </div>
     </div>
 </div>
