@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * User: bijelical
  * Date: 21.03.2016
@@ -25,13 +25,13 @@
                         <div class="row">
                             <div class="input-field col s12">
                                 <input id="username" name="username" type="text" class="validate" required>
-                                <label for="username">Username</label>
+                                <label for="username">Nom d\'utilisateur</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
                                 <input id="password" name="password" type="password" class="validate" required>
-                                <label for="password">Password</label>
+                                <label for="password">Mot de passe</label>
                             </div>
                         </div>
                         <div >
