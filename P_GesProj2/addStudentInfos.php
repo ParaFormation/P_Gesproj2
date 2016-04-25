@@ -19,6 +19,9 @@ session_start();
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="./js/jsGesProj.js"></script>
+    <script src="./js/materialize.js"></script>
 </head>
 <body>
 <main>
@@ -38,7 +41,7 @@ session_start();
             <div class="section">
                 <h3>Profil élève</h3></br></br>
                     <div class="row">
-                        <form class="col s12 m12" method="POST" action="post/postStudConfig.php">';
+                        <form class="col s12 m12" method="POST" onsubmit="return checkPasswords()" action="post/postStudConfig.php">';
                                     if($newUser->checkAlreadyRegistered(1) == false)
                                     {
                                         echo'
