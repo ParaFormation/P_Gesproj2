@@ -517,5 +517,18 @@ class gesprojClass
         $stmt = $this->dbh->prepare("INSERT INTO t_inscription (insDate, fkClass, fkStudent, fkTraining) VALUES (?, ?, ?, ?)");
         $stmt->execute(array(date('Y-m-d H:i:s'), 1, $user, $id));
     }
+
+    /**
+     * @param $name: the name of the connected user
+     * @return array: the result of th query
+     */
+    public function getStudent($name)
+    {
+        $stmt = $this->dbh->prepare('SELECT idStudent FROM t_Student, t_User WHERE useUsername = ? AND fkUser = idUser');
+        $stmt->execute(array($name));
+
+        $result = $stmt->fetchAll();
+        return $result;
+    }
 }
 ?>
