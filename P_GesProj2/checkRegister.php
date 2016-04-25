@@ -2,12 +2,12 @@
 session_start();
 
     include "gesprojClass.php";
-    if (isset($_POST['username'], $_POST['confirmPassword'], $_POST['password']))
+    if (isset($_POST['username'], $_POST['passwordConfirm'], $_POST['password1']))
     {
-        if($_POST['password'] == $_POST['confirmPassword'])
+        if($_POST['password1'] == $_POST['passwordConfirm'])
         {
             $gesprojClass = new gesprojClass();
-            $gesprojClass->Register($_POST['username'],$_POST['password']);
+            $gesprojClass->Register($_POST['username'],$_POST['password1']);
         }
         else
         {
