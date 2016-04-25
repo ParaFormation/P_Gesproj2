@@ -13,7 +13,7 @@ include "./gesprojClass.php";
 if(isset($_SESSION['user']))
 {
     $class = new gesprojClass();
-    if($class->checkAlreadyRegistered(3) == false)
+    if($class->checkAlreadyRegistered(1) == false && $class->checkAlreadyRegistered(2) == false)
     {
         header("location:accountTypeSelection.php");
     }
@@ -25,7 +25,10 @@ if(isset($_SESSION['user']))
         }
         else
         {
-            header("location:addTeacherInfos.php");
+            if($class->checkAlreadyRegistered(2) == true)
+            {
+                header("location:addTeacherInfos.php");
+            }
         }
     }
 }

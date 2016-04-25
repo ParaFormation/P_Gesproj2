@@ -9,6 +9,58 @@ class gesprojClass
     public $lastname;
     public $address;
     public $firstname;
+    public $qualifications;
+    public $email;
+    public $phone;
+
+    /**
+     * @return mixed
+     */
+    public function getQualifications()
+    {
+        return $this->qualifications;
+    }
+
+    /**
+     * @param mixed $qualifications
+     */
+    public function setQualifications($qualifications)
+    {
+        $this->qualifications = $qualifications;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param mixed $phone
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    }
+
 
     /**
      * @return mixed
@@ -246,16 +298,58 @@ class gesprojClass
                 //Execute the query
                 $stmt->execute();
 
+                header("location:../index.php");
+            }
+        }
+        else {
+            //If a teacher is asked
+            if ($whatType == 1) {
+                $firstname = $this->getFirstname();
+                $lastname = $this->getLastname();
+                $address = $this->getAddress();
+                $email = $this->getEmail();
+                $phone = $this->getPhone();
+                $qual = $this->getQualifications();
+                $id = $this->getSessionID();
 
-                //Validate the acc
-                $isStudent = 1;
-                $validateStudent = "UPDATE t_user SET isStudent = '$isStudent' WHERE idUser = '$id'";
+                //Check if the id is not null
+                if ($id != null) {
+                    //Query to create a new user (username & password)
+                    $newFormer = "INSERT INTO t_former(
+                        forFirstname,
+                        forLastname,
+                        forAddress,
+						forEmail,
+						forPhone,
+						forQualifications,
+                        fkUser
+                        ) VALUES (
+                        :forFirstname,
+                        :forLastname,
+                        :forAddress,
+						:forEmail,
+						:forPhone,
+						:forQualifications,
+						:fkUser
+                        )";
 
-                $stmt = $this->dbh->prepare($validateStudent);
+                    //Prepare the query $newFormer
+                    $stmt = $this->dbh->prepare($newFormer);
 
-                $stmt->execute();
+                    //Bind the parameter $useUsername & userPassword
+                    $stmt->bindParam(':forFirstname', $firstname, PDO::PARAM_STR);
+                    $stmt->bindParam(':forLastname', $lastname, PDO::PARAM_STR);
+                    $stmt->bindParam(':forAddress', $address, PDO::PARAM_STR);
+                    $stmt->bindParam(':forEmail', $email, PDO::PARAM_STR);
+                    $stmt->bindParam(':forPhone', $phone, PDO::PARAM_STR);
+                    $stmt->bindParam(':forQualifications', $qual, PDO::PARAM_STR);
+                    $stmt->bindParam(':fkUser', $id, PDO::PARAM_INT);
 
-                header("location:index.php");
+                    //Execute the query
+                    $stmt->execute();
+
+                    header("location:../index.php");
+                }
             }
         }
     }
@@ -288,20 +382,22 @@ class gesprojClass
     }
 
     /**
-     * @param $isStudent
+     * @param $isRegistered
      * @return bool
      * Method to check if a teacher/student has already been configured
      */
-    public function checkAlreadyRegistered($isStudent)
+    public function checkAlreadyRegistered($isRegistered)
     {
         //Check if the user is logged in
         if (isset($_SESSION['user'])) {
             $id = $this->getSessionID();
 
             //CHECK FOR STUDENT
-            if ($isStudent == 1) {
-                $sql2 = "SELECT idStudent FROM t_student WHERE fkUser = '$id'";
+            if ($isRegistered == 1) {
+                $sql2 = ('SELECT idStudent FROM t_student WHERE fkUser = ?');
                 $stmt = $this->dbh->prepare($sql2);
+                $stmt->bindParam(1,$id);
+
                 $stmt->execute();
                 $count = $stmt->rowCount();
 
@@ -314,34 +410,24 @@ class gesprojClass
             }
 
             //CHECK FOR TEACHER
+            if ($isRegistered == 2) {
+                $sql3 = ('SELECT idFormer FROM t_former WHERE fkUser = ?');
+                $stmt = $this->dbh->prepare($sql3);
+                $stmt->bindParam(1,$id);
 
-
-            //CHECK FOR BOTH
-            if ($isStudent == 3) {
-                $sql2 = "SELECT idStudent FROM t_student WHERE fkUser = '$id'";
-                $stmt = $this->dbh->prepare($sql2);
                 $stmt->execute();
                 $count = $stmt->rowCount();
 
-                if ($count == 0)
-                {
-                    $sql3 = "SELECT idFormer FROM t_former WHERE fkUser = '$id'";
-                    $stmt = $this->dbh->prepare($sql3);
-                    $stmt->execute();
-                    $count = $stmt->rowCount();
-
-                    if($count == 0)
-                    {
-                        return false;
-                    }
-                }
-
-                else
-                {
+                if ($count == 0) {
+                    return false;
+                } else {
                     return true;
                 }
 
-            } else {
+            }
+
+            else
+            {
                 echo 'Pas connecté !';
             }
         }

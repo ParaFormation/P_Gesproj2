@@ -24,18 +24,21 @@ session_start();
 <main>
 	<!-- Navbar -->
     <?php
-    ob_start();
         include './gesprojClass.php';
         include './navbar.php';
     $newUser = new gesprojClass();
-    if(isset($_SESSION['user']))
+    if(!isset($_SESSION['user']))
     {
-	echo'
+	echo'Pas connecté';
+    }
+    else
+    {
+        echo '
         <div class="container">
             <div class="section">
                 <h3>Profil élève</h3></br></br>
                     <div class="row">
-                        <form class="col s12 m12" method="POST">';
+                        <form class="col s12 m12" method="POST" action="post/postStudConfig.php">';
                                     if($newUser->checkAlreadyRegistered(1) == false)
                                     {
                                         echo'
@@ -87,24 +90,11 @@ session_start();
             </div>
         </div>';
     }
-    else
-    {
-        echo 'Pas connecté !';
-    }
     ?>
 
 	<!-- Footer -->   
     <?php
         include 'footer.php';
-        if(isset($_POST['lastname'],$_POST['firstname'],$_POST['address']))
-        {
-            $newUser->setAddress($_POST['address']);
-            $newUser->setFirstname($_POST['lastname']);
-            $newUser->setLastname($_POST['firstname']);
-            $newUser->newStudForm(0);
-
-            ob_end_flush();
-        }
     ?>
 
   <!--  Scripts-->
