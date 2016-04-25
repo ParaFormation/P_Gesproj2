@@ -84,15 +84,15 @@ session_start();
 							<div class="row" >
 								<div class="input-field col s12 m6" >
 									<i class="mdi-action-lock-outline prefix" ></i >
-									<input id = "newPassword" name = "newPassword" type = "password" class="validate" required >
-									<label for="newPassword" > Nouveau mot de passe </label >
+									<input id = "password1" name = "password1" type = "password" class="validate" required >
+									<label for="password1" > Nouveau mot de passe </label >
 								</div >
 							</div >
 							<div class="row" >
 								<div class="input-field col s12 m6" >
 									<i class="mdi-action-lock-outline prefix" ></i >
-									<input id = "confirmNewPassword" name = "confirmNewPassword" type = "password" class="validate" required >
-									<label for="confirmNewPassword" > Confirmation du nouveau mot de passe </label >
+									<input id = "passwordConfirm" name = "passwordConfirm" type = "password" class="validate" required >
+									<label for="passwordConfirm" > Confirmation du nouveau mot de passe </label >
 								</div >
 						    </div >';
                         }
