@@ -36,7 +36,7 @@ session_start();
                     <h4 > Qui êtes vous ?</h4 >
                 </div >
             </div >
-            <div class="row" >
+            <div class="row">
                 <div class="col s12 m12 center" >
                     <a href = "./addStudentInfos.php" class="waves-effect waves-light btn" ><i class="material-icons left" > assignment_ind</i > Élève</a >
                     <a  href = "./addTeacherInfos.php" class="waves-effect waves-light btn" ><i class="material-icons left" > perm_identity</i > Formateur</a >
