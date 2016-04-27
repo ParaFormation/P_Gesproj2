@@ -243,10 +243,28 @@ class gesprojClass
     /**
      * Display trainers in the html
      */
-    public function getAllTrainers()
+    public function getAllTrainersWithFormation()
     {
         //Prepare the select request
         $stmt = $this->dbh->prepare('SELECT traName,forLastName,forFirstName,forEmail,forPhone,forQualifications,idFormer,idTraining FROM t_former,t_training WHERE idFormer = fkFormer1 GROUP BY idFormer ORDER BY idTraining');
+
+        //Execute the request
+        $stmt->execute();
+
+        //Get the result of the request in an array
+        $formers = $stmt->fetchAll();
+
+        //Return the list
+        return $formers;
+    }
+
+    /**
+     * Display trainers in the html
+     */
+    public function getAllTrainers()
+    {
+        //Prepare the select request
+        $stmt = $this->dbh->prepare('SELECT idformer, forFirstname, forLastname, forAddress, forEmail, forPhone, forQualifications, fkUser FROM t_former GROUP BY idFormer');
 
         //Execute the request
         $stmt->execute();
@@ -345,7 +363,7 @@ class gesprojClass
                     //Execute the query
                     $stmt->execute();
 
-                    header("location:../index.php");
+                    header("location:../index.php?need_confirmation");
                 }
             }
         }
@@ -491,8 +509,8 @@ class gesprojClass
     {
         $deleteQuery = $this->dbh->prepare('DELETE FROM t_user WHERE idUser = '. $ID . '');
         $deleteQuery->execute();
-        unset($this->objConnection);
 
+        header('location:./trainers.php');
     }
 
     /**
@@ -503,7 +521,6 @@ class gesprojClass
     {
         $updateQuery = $this->dbh->prepare('UPDATE t_user SET isTeacherValidated = 1 WHERE idUser ='. $ID . '');
         $updateQuery->execute();
-        unset($this->objConnection);
 
     }
 
