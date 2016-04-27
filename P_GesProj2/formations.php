@@ -64,7 +64,6 @@ if(isset($_GET['idTraining'])) {
                                         <li><a href="inscription.php?id='. $form['idTraining'] .'&a=login" class="btn tooltipped waves-effect waves-light btn light-blue accent-3" data-position="right" data-delay="50" data-tooltip="En cours de développement"><i class="material-icons right">note_add</i>S\'inscrire</a></li><br>
                                         <a href="formations.php?idTraining='. $form['idTraining'] .'" class="btn tooltipped waves-effect waves-red btn red accent-3" data-position="right" data-delay="50" data-tooltip="En cours de développement"><i class="material-icons right">delete</i>Supprimer</a>
                                         <a href="modifyFormation.php?id='. $form['idTraining'] .'" class="btn tooltipped waves-effect waves-orange btn orange accent-3" data-position="right" data-delay="50" data-tooltip="En cours de développement"><i class="material-icons right">mode_edit</i>Modifier</a></li><br>
-
                                     </div>
                                 </ul>
 

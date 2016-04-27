@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Author: carvalhoda
  * Date: 11.04.2016
@@ -258,33 +258,23 @@ class gesprojClass
         return $formers;
     }
 
-	
-    /**
-    * @param $name: the name of the connected user
-    * @return array: the result of th query
-    */
-    public function getStudent($name)
-    {
-        $stmt = $this->dbh->prepare('SELECT idStudent FROM t_Student, t_User WHERE useUsername = ? AND fkUser = idUser');
-        $stmt->execute(array($name));
-
-        $result = $stmt->fetchAll();
-        return $result;
-    }
-
-
     /**
      * @param $whatType
      * Method to configure a new student or teacher
      */
     public function newStudForm($whatType)
     {
+        $firstname = $this->getFirstname();
+        $lastname = $this->getLastname();
+        $address = $this->getAddress();
+        $email = $this->getEmail();
+        $phone = $this->getPhone();
+        $qual = $this->getQualifications();
+        $id = $this->getSessionID();
+
         #If a student is asked
         if($whatType == 0) {
-            $firstname = $this->getFirstname();
-            $lastname = $this->getLastname();
-            $address = $this->getAddress();
-            $id = $this->getSessionID();
+
 
             //Check if the id is not null
             if ($id != null) {
@@ -319,14 +309,6 @@ class gesprojClass
         else {
             //If a teacher is asked
             if ($whatType == 1) {
-                $firstname = $this->getFirstname();
-                $lastname = $this->getLastname();
-                $address = $this->getAddress();
-                $email = $this->getEmail();
-                $phone = $this->getPhone();
-                $qual = $this->getQualifications();
-                $id = $this->getSessionID();
-
                 //Check if the id is not null
                 if ($id != null) {
                     //Query to create a new user (username & password)
@@ -440,26 +422,113 @@ class gesprojClass
                 }
 
             }
-
-            else
-            {
-                echo 'Pas connecté !';
-            }
         }
         return null;
     }
 
+    /*
+	*	Change the password of a user
+	*	param1 : ID of the user
+	*	param2 : new password
+	*/
+    public function ChangePassword($userID, $newPassword)
+    {
+        if($userID != null && $newPassword != null)
+        {
+            //Hash the password with sha1
+            $encPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+
+            // Query to update the password
+            $updateQuery = ("UPDATE t_user SET usePassword = :password WHERE idUser = :ID");
+
+            //Prepare the query
+            $stmt = $this->dbh->prepare($updateQuery);
+
+            //Bind the parameters
+            $stmt->bindParam(':password', $encPassword, PDO::PARAM_STR);
+            $stmt->bindParam(':ID', $userID, PDO::PARAM_INT);
+
+            //Execute the query
+            $stmt->execute();
+
+
+            //Redirect to the index
+            header('location: ../index.php?password_changed');
+        }
+        else
+        {
+            //Redirect to the form page
+            header('location: ../addTeacherInfos.php?post_error');
+        }
+
+        //Kill the connection
+        unset($this->dbh);
+    }
 
     /**
-    * Register a student to a training
-    * @param $id: The id of the training
-    * @param $user: The id of user
-    */
+     * Display former in the html
+     */
+    public function getFormerToConfirm()
+    {
+        //Prepare the select request
+        $stmt = $this->dbh->prepare('SELECT forLastName,forFirstName,forEmail,forPhone,forQualifications,idFormer,fkUser FROM t_former,t_user WHERE fkUser = idUser AND isTeacherValidated = 0');
+
+        //Execute the request
+        $stmt->execute();
+
+        //Get the result of the request in an array
+        $FormerToConfirm = $stmt->fetchAll();
+
+        //return formers
+        return $FormerToConfirm;
+    }
+
+    /**
+     * @param $ID
+     * delete former
+     */
+    public function DeleteFormer($ID)
+    {
+        $deleteQuery = $this->dbh->prepare('DELETE FROM t_user WHERE idUser = '. $ID . '');
+        $deleteQuery->execute();
+        unset($this->objConnection);
+
+    }
+
+    /**
+     * @param $ID
+     * confirm former
+     */
+    public function ConfirmFormer($ID)
+    {
+        $updateQuery = $this->dbh->prepare('UPDATE t_user SET isTeacherValidated = 1 WHERE idUser ='. $ID . '');
+        $updateQuery->execute();
+        unset($this->objConnection);
+
+    }
+
+    /**
+     * Register a student to a training
+     * @param $id: The id of the training
+     * @param $user: The id of user
+     */
     public function registerStudentToTraining($id, $user)
     {
         $stmt = $this->dbh->prepare("INSERT INTO t_inscription (insDate, fkClass, fkStudent, fkTraining) VALUES (?, ?, ?, ?)");
         $stmt->execute(array(date('Y-m-d H:i:s'), 1, $user, $id));
     }
 
+    /**
+     * @param $name: the name of the connected user
+     * @return array: the result of th query
+     */
+    public function getStudent($name)
+    {
+        $stmt = $this->dbh->prepare('SELECT idStudent FROM t_Student, t_User WHERE useUsername = ? AND fkUser = idUser');
+        $stmt->execute(array($name));
+
+        $result = $stmt->fetchAll();
+        return $result;
+    }
 }
 ?>

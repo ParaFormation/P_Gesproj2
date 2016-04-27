@@ -19,6 +19,9 @@ session_start();
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="./js/jsGesProj.js"></script>
+    <script src="./js/materialize.js"></script>
 </head>
 <body>
 <main>
@@ -38,7 +41,7 @@ session_start();
             <div class="section">
                 <h3>Profil élève</h3></br></br>
                     <div class="row">
-                        <form class="col s12 m12" method="POST" action="post/postStudConfig.php">';
+                        <form class="col s12 m12" method="POST" onsubmit="return checkPasswords()" action="post/postStudConfig.php">';
                                     if($newUser->checkAlreadyRegistered(1) == false)
                                     {
                                         echo'
@@ -69,15 +72,15 @@ session_start();
                                 <div class="row" >
                                     <div class="input-field col s12 m6" >
                                         <i class="mdi-action-lock-outline prefix" ></i >
-                                        <input id = "newPassword" name = "newPassword" type = "password" class="validate" >
-                                        <label for="newPassword" > Nouveau mot de passe </label >
+                                        <input id = "password1" name = "password1" type = "password" class="validate" >
+                                        <label for="password1" > Nouveau mot de passe </label >
                                     </div >
                                 </div >
                                 <div class="row" >
                                     <div class="input-field col s12 m6" >
                                         <i class="mdi-action-lock-outline prefix" ></i >
-                                        <input id = "confirmNewPassword" name = "confirmNewPassword" type = "password" class="validate" >
-                                        <label for="confirmNewPassword" > Confirmation du nouveau mot de passe </label >
+                                        <input id = "passwordConfirm" name = "passwordConfirm" type = "password" class="validate" >
+                                        <label for="passwordConfirm" > Confirmation du nouveau mot de passe </label >
                                     </div >
                                 </div >';
                             }
