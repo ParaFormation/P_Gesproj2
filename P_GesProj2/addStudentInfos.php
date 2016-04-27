@@ -30,11 +30,7 @@ session_start();
         include './gesprojClass.php';
         include './navbar.php';
     $newUser = new gesprojClass();
-    if(!isset($_SESSION['user']))
-    {
-	echo'Pas connecté';
-    }
-    else
+    if(isset($_SESSION['user']) && ($newUser->checkAlreadyRegistered(2) == false))
     {
         echo '
         <div class="container">
@@ -42,48 +38,48 @@ session_start();
                 <h3>Profil élève</h3></br></br>
                     <div class="row">
                         <form class="col s12 m12" method="POST" onsubmit="return checkPasswords()" action="post/postStudConfig.php">';
-                                    if($newUser->checkAlreadyRegistered(1) == false)
-                                    {
-                                        echo'
-                                        <div class="row">
-                                            <div class="input-field col s6 m6">
-                                                <i class="material-icons prefix">account_circle</i>
-                                                <input name="firstname" id="firstname" type="text" class="validate" required>
-                                                <label for="firstname">Prénom</label>
-                                            </div>
-                                            <div class="input-field col s6 m6">
-                                                <input id="lastname" name="lastname" type="text" class="validate" required>
-                                                <label for="lastname">Nom de famille</label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="input-field col s12 m12">
-                                                <i class="material-icons prefix">room</i>
-                                                <input id="address" name="address" type="text" class="validate" required>
-                                                <label for="address">Adresse + NPA</label>
-                                            </div>
-                                            </br></br></br>
-                                        </div>';
-                                    }
-                            if($newUser->checkAlreadyRegistered(1) == true)
-                            {
-                                echo'
-                                <h5> Changer le mot de passe </h5>
-                                <div class="row" >
-                                    <div class="input-field col s12 m6" >
-                                        <i class="mdi-action-lock-outline prefix" ></i >
-                                        <input id = "password1" name = "password1" type = "password" class="validate" >
-                                        <label for="password1" > Nouveau mot de passe </label >
-                                    </div >
-                                </div >
-                                <div class="row" >
-                                    <div class="input-field col s12 m6" >
-                                        <i class="mdi-action-lock-outline prefix" ></i >
-                                        <input id = "passwordConfirm" name = "passwordConfirm" type = "password" class="validate" >
-                                        <label for="passwordConfirm" > Confirmation du nouveau mot de passe </label >
-                                    </div >
-                                </div >';
-                            }
+        if($newUser->checkAlreadyRegistered(1) == false)
+        {
+            echo'
+                <div class="row">
+                    <div class="input-field col s6 m6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input name="firstname" id="firstname" type="text" class="validate" required>
+                        <label for="firstname">Prénom</label>
+                    </div>
+                    <div class="input-field col s6 m6">
+                        <input id="lastname" name="lastname" type="text" class="validate" required>
+                        <label for="lastname">Nom de famille</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m12">
+                        <i class="material-icons prefix">room</i>
+                        <input id="address" name="address" type="text" class="validate" required>
+                        <label for="address">Adresse + NPA</label>
+                    </div>
+                    </br></br></br>
+                </div>';
+        }
+        if($newUser->checkAlreadyRegistered(1) == true)
+        {
+            echo'
+                <h5> Changer le mot de passe </h5>
+                <div class="row" >
+                    <div class="input-field col s12 m6" >
+                        <i class="mdi-action-lock-outline prefix" ></i >
+                        <input id = "password1" name = "password1" type = "password" class="validate" >
+                        <label for="password1" > Nouveau mot de passe </label >
+                    </div >
+                </div >
+                <div class="row" >
+                    <div class="input-field col s12 m6" >
+                        <i class="mdi-action-lock-outline prefix" ></i >
+                        <input id = "passwordConfirm" name = "passwordConfirm" type = "password" class="validate" >
+                        <label for="passwordConfirm" > Confirmation du nouveau mot de passe </label >
+                    </div >
+                </div >';
+        }
                         echo'
                         <button class="btn waves-effect waves-light blue" type="submit" name="action">Enregistrer les informations
                             <i class="material-icons right">done</i>
@@ -92,6 +88,11 @@ session_start();
                 </div>
             </div>
         </div>';
+
+    }
+    else
+    {
+        header('location: ./index.php');
     }
     ?>
 
