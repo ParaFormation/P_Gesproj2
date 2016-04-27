@@ -27,7 +27,7 @@ session_start();
     include "./gesprojClass.php";
     $class = new gesprojClass();
     include './navbar.php';
-    if(isset($_SESSION['user']) && $class->checkAlreadyRegistered(3) == false)
+    if(isset($_SESSION['user']) && ($class->checkAlreadyRegistered(1) == false) || ($class->checkAlreadyRegistered(2) == false))
     {
         echo'
         <div class="container" >
