@@ -69,11 +69,10 @@ $formations = $gesprojClass->getAllFormations();
                         echo($li);;
 
                     }
-
-                    ?>
-
+				?>
             </ul>
-            <a href="addFormationInfos.php" class="btn tooltipped waves-effect waves-teal btn green accent-3" data-position="right" data-delay="50" data-tooltip="En cours de développement"><i class="material-icons right">add</i>Ajouter</a>
+            <a href="./addFormationInfos.php" class="btn tooltipped waves-effect waves-teal btn teal lighten-2" data-position="left" data-delay="50" data-tooltip="En cours de développement"><i class="material-icons right">add</i>Ajouter</a>
+			<a href="./survey.php" class="waves-effect blue white-text waves-light btn"><i class="material-icons left">assignment</i>Évaluer une formation</a>
         </div>
     </div>
 </div>
