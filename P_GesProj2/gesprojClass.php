@@ -12,6 +12,228 @@ class gesprojClass
     public $qualifications;
     public $email;
     public $phone;
+	public $formationList;	
+	public $valQ1;
+    public $valQ2;
+    public $valQ3;
+    public $valQ4;
+    public $valQ5;
+    public $valQ6;
+    public $valQ7;
+    public $valQ8;
+    public $valQ9;
+    public $valQ10;
+    public $valQ11;
+    public $comment;
+    public $formationID;
+
+    /**
+     * @return mixed
+     */
+    public function getValQ1()
+    {
+        return $this->valQ1;
+    }
+
+    /**
+     * @param mixed $valQ1
+     */
+    public function setValQ1($valQ1)
+    {
+        $this->valQ1 = $valQ1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValQ2()
+    {
+        return $this->valQ2;
+    }
+
+    /**
+     * @param mixed $valQ2
+     */
+    public function setValQ2($valQ2)
+    {
+        $this->valQ2 = $valQ2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValQ3()
+    {
+        return $this->valQ3;
+    }
+
+    /**
+     * @param mixed $valQ3
+     */
+    public function setValQ3($valQ3)
+    {
+        $this->valQ3 = $valQ3;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValQ4()
+    {
+        return $this->valQ4;
+    }
+
+    /**
+     * @param mixed $valQ4
+     */
+    public function setValQ4($valQ4)
+    {
+        $this->valQ4 = $valQ4;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValQ5()
+    {
+        return $this->valQ5;
+    }
+
+    /**
+     * @param mixed $valQ5
+     */
+    public function setValQ5($valQ5)
+    {
+        $this->valQ5 = $valQ5;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValQ6()
+    {
+        return $this->valQ6;
+    }
+
+    /**
+     * @param mixed $valQ6
+     */
+    public function setValQ6($valQ6)
+    {
+        $this->valQ6 = $valQ6;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValQ7()
+    {
+        return $this->valQ7;
+    }
+
+    /**
+     * @param mixed $valQ7
+     */
+    public function setValQ7($valQ7)
+    {
+        $this->valQ7 = $valQ7;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValQ8()
+    {
+        return $this->valQ8;
+    }
+
+    /**
+     * @param mixed $valQ8
+     */
+    public function setValQ8($valQ8)
+    {
+        $this->valQ8 = $valQ8;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValQ9()
+    {
+        return $this->valQ9;
+    }
+
+    /**
+     * @param mixed $valQ9
+     */
+    public function setValQ9($valQ9)
+    {
+        $this->valQ9 = $valQ9;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValQ10()
+    {
+        return $this->valQ10;
+    }
+
+    /**
+     * @param mixed $valQ10
+     */
+    public function setValQ10($valQ10)
+    {
+        $this->valQ10 = $valQ10;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValQ11()
+    {
+        return $this->valQ11;
+    }
+
+    /**
+     * @param mixed $valQ11
+     */
+    public function setValQ11($valQ11)
+    {
+        $this->valQ11 = $valQ11;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * @param mixed $comment
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFormationID()
+    {
+        return $this->formationID;
+    }
+
+    /**
+     * @param mixed $formationID
+     */
+    public function setFormationID($formationID)
+    {
+        $this->formationID = $formationID;
+    }
 
     /**
      * @return mixed
@@ -531,8 +753,8 @@ class gesprojClass
      */
     public function registerStudentToTraining($id, $user)
     {
-        $stmt = $this->dbh->prepare("INSERT INTO t_inscription (insDate, fkStudent, fkTraining) VALUES (?, ?, ?)");
-        $stmt->execute(array(date('Y-m-d H:i:s'), $user, $id));
+        $stmt = $this->dbh->prepare("INSERT INTO t_inscription (insDate, fkClass, fkStudent, fkTraining) VALUES (?, ?, ?, ?)");
+        $stmt->execute(array(date('Y-m-d H:i:s'), 1, $user, $id));
     }
 
     /**
@@ -547,41 +769,115 @@ class gesprojClass
         $result = $stmt->fetchAll();
         return $result;
     }
+	
+	/*
+	*	Get all the teachers in t_former
+	*/
+	public function getAllTeachers()
+	{
+		//Query to get all the teacher's name / lastname
+		$stmt = $this->dbh->prepare('SELECT forFirstName, forLastName FROM t_former ORDER BY idFormer');
+		
+		//Execute the query
+		$stmt->execute();
+		
+		//Set all the infos into an array
+		$teachers = $stmt->fetchAll();
+		
+		//Return the array
+		return $teachers;
+	}
+	
+	/*
+	*	Add a new survey result in t_survey
+	*/
+	public function addSurveyResult()
+	{
+		$date = date('Y-m-d H:i:s');
+		$Q1 = $this->getValQ1();
+		$Q2 = $this->getValQ2();
+		$Q3 = $this->getValQ3();
+		$Q4 = $this->getValQ4();
+		$Q5 = $this->getValQ5();
+		$Q6 = $this->getValQ6();
+		$Q7 = $this->getValQ7();
+		$Q8 = $this->getValQ8();
+		$Q9 = $this->getValQ9();
+		$Q10 = $this->getValQ10();
+		$Q11 = $this->getValQ11();
+		$comment = $this->getComment();
+		$fkTraining = $this->getFormationID();
+		
 
-    /**
-     * Display formation in the html
-     */
-    public function getTrainerFormations($userName)
-    {
-        //Prepare the select request
-        $stmt = $this->dbh->prepare('SELECT forLastName AS former1, fkFormer2 AS form2,idTraining,traName,traDescription,traStartDate,traEndDate,traPeriodicity,traPrice,traLocality,traMinParticipants,traMaxParticipants FROM t_former,t_training, t_user WHERE fkFormer1 = idFormer AND useUsername=? AND idUser=fkUser ORDER BY idTraining');
+		//Query to create a new survey
+		$query = "INSERT INTO t_survey(
+					surDate,
+					surQuestion1Note,
+					surQuestion2Note,
+					surQuestion3Note,
+					surQuestion4Note,
+					surQuestion5Note,
+					surQuestion6Note,
+					surComment,
+					fkTraining,
+					surQuestion7Note,
+					surQuestion8Note,
+					surQuestion9Note,
+					surQuestion10Note,
+					surQuestion11Note
+					) 
+					VALUES 
+					(
+					:surDate,
+					:surQuestion1Note,
+					:surQuestion2Note,
+					:surQuestion3Note,
+					:surQuestion4Note,
+					:surQuestion5Note,
+					:surQuestion6Note,
+					:surComment,
+					:fkTraining,
+					:surQuestion7Note,
+					:surQuestion8Note,
+					:surQuestion9Note,
+					:surQuestion10Note,
+					:surQuestion11Note
+					)";
 
-        //Execute the request
-        $stmt->execute(array($userName));
-
-        //Get the result of the request in an array
-        $formations = $stmt->fetchAll();
-
-        //return formations
-        return $formations;
-    }
-
-    /**
-     * Display number of registered participants
-     */
-    public function registeredParticipants($idTraining){
-        //Prepare the select request
-        $stmt = $this->dbh->prepare("SELECT count(fkStudent) AS Students FROM t_inscription WHERE fkTraining=?");
+			//Prepare the query $newSurvey
+			$stmt = $this->dbh->prepare($query);
 
 
-        //Execute the request
-        $stmt->execute(array($idTraining));
+			//Bind the parameters
+			$stmt->bindParam(':surDate',$date,PDO::PARAM_STR);
+			$stmt->bindParam(':surQuestion1Note',$Q1, PDO::PARAM_INT);
+			$stmt->bindParam(':surQuestion2Note',$Q2, PDO::PARAM_INT);
+			$stmt->bindParam(':surQuestion3Note',$Q3, PDO::PARAM_INT);
+			$stmt->bindParam(':surQuestion4Note',$Q4, PDO::PARAM_INT);
+			$stmt->bindParam(':surQuestion5Note',$Q5, PDO::PARAM_INT);
+			$stmt->bindParam(':surQuestion6Note',$Q6, PDO::PARAM_INT);
+			$stmt->bindParam(':surQuestion7Note',$Q7, PDO::PARAM_INT);
+			$stmt->bindParam(':surQuestion8Note',$Q8, PDO::PARAM_INT);
+			$stmt->bindParam(':surQuestion9Note',$Q9, PDO::PARAM_INT);
+			$stmt->bindParam(':surQuestion10Note',$Q10, PDO::PARAM_INT);
+			$stmt->bindParam(':surQuestion11Note',$Q11, PDO::PARAM_INT);
+			$stmt->bindParam(':surComment', $comment, PDO::PARAM_STR);
+			$stmt->bindParam(':fkTraining', $fkTraining, PDO::PARAM_INT);
 
-        //Get the result of the request in an array
-        $partcipants = $stmt->fetch();
+			//Execute the query
+			$stmt->execute();
 
-        //return formations
-        return $partcipants;
-    }
+			header("location: ./index.php?success_survey");
+		
+			
+	}
+	
+	/*
+	* Kill the connection to the database
+	*/
+	public function killConn()
+	{
+		unset($this->dbh);
+	}
 }
 ?>
