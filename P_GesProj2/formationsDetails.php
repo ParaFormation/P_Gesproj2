@@ -38,19 +38,21 @@ session_start();
             include 'loginModal.php';
             ?>
 
-            <h1>Formations</h1>
+            <h1>Mes formations</h1>
             <div class="row">
-                <ul class="collapsible" data-collapsible="accordion">
+                <ul class="collapsible" data-collapsible="expandable">
                     <?php
                     include 'gesprojClass.php';
 
                     $gesprojClass = new gesprojClass();
-                    $formations = $gesprojClass->getAllFormations();
+                    $formations = $gesprojClass->getTrainerFormations($_SESSION['user']);
 
                     foreach($formations as $form)
                     {
+                        $nbParticipants = $gesprojClass->registeredParticipants($form['idTraining']);
+
                         $li = '<li>
-                            <div class="collapsible-header"><i class="material-icons">filter_drama</i>' . $form['traName'] . '</div>
+                            <div class="collapsible-header active"><i class="material-icons">filter_drama</i>' . $form['traName'] . '</div>
                             <div class="collapsible-body">
                                 <ul></br>
                                     <div class="margin-ul">
@@ -62,8 +64,8 @@ session_start();
                                         <li><strong>Lieu : </strong>' .$form['traLocality']. '</li></br>
                                         <li><strong>Nombre de participant min. : </strong>' .$form['traMinParticipants']. '</li></br>
                                         <li><strong>Nombre de participant max. : </strong>' .$form['traMaxParticipants']. '</li></br>
+                                        <li><strong>Nombre de participant : </strong>' .$nbParticipants['Students']. '</li></br>
                                         <li><strong>Formateur : </strong><a href="./trainers.php">' .$form['former1']. '</a></li></br>
-                                        <li><a href="inscription.php?id='. $form['idTraining'] .'&a=login" class="btn tooltipped waves-effect waves-light btn light-blue accent-3" data-position="right" data-delay="50" data-tooltip="En cours de développement"><i class="material-icons right">note_add</i>S\'inscrire</a>
                                         </br>
                                     </div>
                                 </ul>
@@ -79,7 +81,6 @@ session_start();
                     ?>
 
                 </ul>
-                <a href="addFormationInfos.php" class="btn tooltipped waves-effect waves-teal btn green accent-3" data-position="right" data-delay="50" data-tooltip="En cours de développement"><i class="material-icons right">add</i>Ajouter</a>
             </div>
 
         </div>

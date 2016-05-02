@@ -531,8 +531,8 @@ class gesprojClass
      */
     public function registerStudentToTraining($id, $user)
     {
-        $stmt = $this->dbh->prepare("INSERT INTO t_inscription (insDate, fkClass, fkStudent, fkTraining) VALUES (?, ?, ?, ?)");
-        $stmt->execute(array(date('Y-m-d H:i:s'), 1, $user, $id));
+        $stmt = $this->dbh->prepare("INSERT INTO t_inscription (insDate, fkStudent, fkTraining) VALUES (?, ?, ?)");
+        $stmt->execute(array(date('Y-m-d H:i:s'), $user, $id));
     }
 
     /**
@@ -546,6 +546,42 @@ class gesprojClass
 
         $result = $stmt->fetchAll();
         return $result;
+    }
+
+    /**
+     * Display formation in the html
+     */
+    public function getTrainerFormations($userName)
+    {
+        //Prepare the select request
+        $stmt = $this->dbh->prepare('SELECT forLastName AS former1, fkFormer2 AS form2,idTraining,traName,traDescription,traStartDate,traEndDate,traPeriodicity,traPrice,traLocality,traMinParticipants,traMaxParticipants FROM t_former,t_training, t_user WHERE fkFormer1 = idFormer AND useUsername=? AND idUser=fkUser ORDER BY idTraining');
+
+        //Execute the request
+        $stmt->execute(array($userName));
+
+        //Get the result of the request in an array
+        $formations = $stmt->fetchAll();
+
+        //return formations
+        return $formations;
+    }
+
+    /**
+     * Display number of registered participants
+     */
+    public function registeredParticipants($idTraining){
+        //Prepare the select request
+        $stmt = $this->dbh->prepare("SELECT count(fkStudent) AS Students FROM t_inscription WHERE fkTraining=?");
+
+
+        //Execute the request
+        $stmt->execute(array($idTraining));
+
+        //Get the result of the request in an array
+        $partcipants = $stmt->fetch();
+
+        //return formations
+        return $partcipants;
     }
 }
 ?>
