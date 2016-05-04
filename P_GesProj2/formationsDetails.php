@@ -25,19 +25,19 @@ session_start();
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="./js/jsGesProj.js"></script>
+    <script src="./js/materialize.js"></script>
 </head>
 <body>
 <main>
     <?php
-    include './navbar.php';
+        include './navbar.php';
+        include 'loginModal.php';
     ?>
 
     <div class="container">
         <div class="section">
-            <?php
-            include 'loginModal.php';
-            ?>
-
             <h1>Mes formations</h1>
             <div class="row">
                 <ul class="collapsible" data-collapsible="expandable">
@@ -93,8 +93,6 @@ session_start();
 
 
     <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js/materialize.js"></script>
     <script src="js/init.js"></script>
 </main>
 </body>
