@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,14 +40,14 @@ foreach($trainerList as $trainer)
                                                 <li><strong>Email : </strong>' .$trainer['forEmail']. '</li></br>
                                                 <li><strong>Téléphone : </strong>' .$trainer['forPhone']. '</li></br>
                                                 <li><strong>Qualifications : </strong>' .$trainer['forQualifications']. '</li></br>
-                                                <a href="trainers.php?fkUser='. $trainer['fkUser'] .'" class="btn tooltipped waves-effect waves-red btn red accent-3" data-position="right" data-delay="50" data-tooltip="En cours de développement"><i class="material-icons right">delete</i>Supprimer</a><br>
+                                                <a href="trainers.php?fkUser='. $trainer['fkUser'] .'" class="btn waves-effect waves-red btn red accent-3"><i class="material-icons right">delete</i>Supprimer</a><br>
                                                 </br>
                                             </div>
                                         </ul>
                                     </div>
                                 </li>';
 }
-
+ob_end_flush();
 ?>
 
 <div class="container">
