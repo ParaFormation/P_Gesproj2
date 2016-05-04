@@ -1,5 +1,10 @@
 <?php
 session_start();
+//Redirect to index if user isn't logged
+if(!isset($_SESSION['user']))
+{
+	header('location: ./index.php');
+}
 ?>
 <?php
 /**
