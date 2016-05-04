@@ -6,6 +6,7 @@
  */
 
 session_start();
+
 ?>
 <?php
 /**
@@ -40,47 +41,68 @@ session_start();
         <div class="section">
             <h1>Mes formations</h1>
             <div class="row">
-                <ul class="collapsible" data-collapsible="expandable">
+
                     <?php
-                    include 'gesprojClass.php';
+                    include 'gesProjClass.php';
 
-                    $gesprojClass = new gesprojClass();
-                    $formations = $gesprojClass->getTrainerFormations($_SESSION['user']);
+                    $class = new gesprojClass();
 
-                    foreach($formations as $form)
-                    {
-                        $nbParticipants = $gesprojClass->registeredParticipants($form['idTraining']);
+                    $result = $class->checkAlreadyRegistered(1);
 
-                        $li = '<li>
-                            <div class="collapsible-header active"><i class="material-icons">filter_drama</i>' . $form['traName'] . '</div>
-                            <div class="collapsible-body">
-                                <ul></br>
-                                    <div class="margin-ul">
-                                        <li><strong>Description : </strong>' .$form['traDescription']. '</li></br>
-                                        <li><strong>Date de début : </strong>' .$form['traStartDate']. '</li></br>
-                                        <li><strong>Date de fin : </strong>' .$form['traEndDate']. '</li></br>
-                                        <li><strong>Périodicité : </strong>' .$form['traPeriodicity']. '</li></br>
-                                        <li><strong>Prix : </strong>' .$form['traPrice']. '.-</li></br>
-                                        <li><strong>Lieu : </strong>' .$form['traLocality']. '</li></br>
-                                        <li><strong>Nombre de participant min. : </strong>' .$form['traMinParticipants']. '</li></br>
-                                        <li><strong>Nombre de participant max. : </strong>' .$form['traMaxParticipants']. '</li></br>
-                                        <li><strong>Nombre de participant : </strong>' .$nbParticipants['Students']. '</li></br>
-                                        <li><strong>Formateur : </strong><a href="./trainers.php">' .$form['former1']. '</a></li></br>
-                                        </br>
-                                    </div>
-                                </ul>
+                    if(isset($_SESSION['user']) || $result == true) {
+                        echo    '<ul class="collapsible" data-collapsible="expandable">';
+                        $formations = $class->getTrainerFormations($_SESSION['user']);
 
-                            </div>
+                        foreach ($formations as $form) {
+                            $nbParticipants = $class->registeredParticipants($form['idTraining']);
 
-                        </li>';
+                            $li = '<li>
+                                <div class="collapsible-header active"><i class="material-icons">filter_drama</i>' . $form['traName'] . '</div>
+                                <div class="collapsible-body">
+                                    <ul></br>
+                                        <div class="margin-ul">
+                                            <li><strong>Description : </strong>' . $form['traDescription'] . '</li></br>
+                                            <li><strong>Date de début : </strong>' . $form['traStartDate'] . '</li></br>
+                                            <li><strong>Date de fin : </strong>' . $form['traEndDate'] . '</li></br>
+                                            <li><strong>Périodicité : </strong>' . $form['traPeriodicity'] . '</li></br>
+                                            <li><strong>Prix : </strong>' . $form['traPrice'] . '.-</li></br>
+                                            <li><strong>Lieu : </strong>' . $form['traLocality'] . '</li></br>
+                                            <li><strong>Nombre de participant min. : </strong>' . $form['traMinParticipants'] . '</li></br>
+                                            <li><strong>Nombre de participant max. : </strong>' . $form['traMaxParticipants'] . '</li></br>
+                                            <li><strong>Nombre de participant : </strong>' . $nbParticipants['Students'] . '</li></br>
+                                            <li><strong>Formateur : </strong><a href="./trainers.php">' . $form['former1'] . '</a></li></br>
+                                            </br>
+                                        </div>
+                                    </ul>
 
-                        echo($li);;
+                                </div>
 
+                            </li>';
+
+                            echo($li);;
+
+                        }
+                        echo '</ul>';
                     }
-
+                    else{
+                        echo '
+                          <div class="row center">
+                            <div class="col s12 m12">
+                              <div class="card red">
+                                <div class="card-content white-text">
+                                  <span class="card-title">Page réservée aux formateurs</span>
+                                  <p>Pour accéder à cette page, vous devez vous connectez en tant que formateur.</p>
+                                </div>
+                                <div class="card-action">
+                                  <a href="index.php" class="white-text waves-effect waves-light grey btn">Retour à l\'accueil</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        ';
+                    }
                     ?>
 
-                </ul>
             </div>
 
         </div>
