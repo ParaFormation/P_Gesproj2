@@ -24,7 +24,7 @@
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="left hide-on-med-and-down">
                 <li><a href="index.php" class="hide-button">Accueil</a></li>
-                <li><a href="#!" data-activates="dropdown2" class="hide-button dropdown-button">Formations<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button hide-button" href="#!" data-activates="dropdown2">Formations<i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a class="dropdown-button hide-button" href="#!" data-activates="dropdown1">Formateurs<i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a href="about.php" class="hide-button">A propos</a></li>
             </ul>
