@@ -1,0 +1,12 @@
+USE db_gesproj2;
+INSERT INTO `db_gesproj2`.`t_user` (`idUser`, `useUsername`, `usePassword`, `isTeacherValidated`) VALUES
+(NULL, 'JFR', '$2y$10$hxmku3Horv/Nr/z9JBLkCeKbZrUviSfKEDxEp/QBLdDBvaJ58U3YW', '1'),
+ (NULL, 'LLC', '$2y$10$TYeWKex4OBH9WazN5BU.eOpP23b1M.v1NSsztNfmd95zGJFE.N9au', '1'),
+ (NULL, 'DTS', '$2y$10$dg684Y/isZ9ASk34R6oPK.JMbFzrj2.PE5KZVMJKEDXB6Gcd2K/TS', '1'),
+ (NULL, 'HLI', '$2y$10$00.HTBnR7hwSLEdyqEWBXuiUx3achw3lzpxODYoZkxjQfCPVNEmbm', '1'),
+ (NULL, 'JRH', '$2y$10$Zyoc7i.DWAKV/0TUmpc2nOiZnjQr2WKq1MphTcBa6UTGjjCfeWDhe', '1'),
+ (NULL, 'RMR', '$2y$10$aBdlm7LNeZ60kfUkUqrduuez.eV3vdbhxNhwbN7nGX35jvYcX0be2', '1'),
+ (NULL, 'MKE', '$2y$10$oG.WxLQIQKg3yzGoXueFcuOLyYa.9DGDUZYyKpL.ncgh3OjCL6zWa', '1'),
+ (NULL, 'TDA', '$2y$10$8WazddcfiFP.1DsLZrngvuNJ70WxNkFsS2BT5T9BYVjxPezdus0Le', '1'),
+ (NULL, 'FPO', '$2y$10$Jk65onwfFunaTeXbts0GrulZ5lLIN.IOHYIqdJ6T8EYCwopPphFme', '1'),
+ (NULL, 'MLZ', '$2y$10$OiJig4fLcpa9acADy8enk.YhlRqJquFMPNWqtg/TOBubTu0SBn7Ha', '1');

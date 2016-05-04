@@ -35,8 +35,8 @@
                             </div>
                         </div>
                         <div >
-                            <button type="submit" class="modal-action waves-effect blue btn-flat white-text">Se connecter</button>
-                            <button class="modal-action modal-close waves-effect waves-red  btn-flat ">Annuler</button>
+                            <button name="submit_button" type="submit" class="modal-action waves-effect blue btn-flat white-text">Se connecter</button>
+                            <a href="index.php" class="waves-effect waves-red  btn-flat">Annuler</a>
                         </div>
                     </form>
                 </div>');
@@ -45,3 +45,8 @@
 
     </div>
 </div>
+<script type="text/javascript">
+<?php if(isset($_GET['resON']) && $_GET['resON'] == "1" || $_GET['resON'] == "2") { ?> 
+          $('#modal1').openModal();
+<?php } ?>
+</script>
