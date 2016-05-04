@@ -41,8 +41,18 @@ $formations = $gesprojClass->getAllFormations();
         <div class="row">
             <ul class="collapsible" data-collapsible="accordion">
                     <?php
+					
+
+					
                     foreach($formations as $form)
                     {
+						$regButton = "";
+					
+						if(isset($_SESSION['user']))
+						{
+							$regButton = '<a href="inscription.php?id='. $form['idTraining'] .'&a=login" class="btn waves-effect waves-light btn light-blue accent-3"><i class="material-icons right">note_add</i>S\'inscrire</a>';
+						}
+						
                         $li = '<li>
                             <div class="collapsible-header"><i class="material-icons">filter_drama</i>' . $form['traName'] . '</div>
                             <div class="collapsible-body">
@@ -51,13 +61,13 @@ $formations = $gesprojClass->getAllFormations();
                                         <li><strong>Description : </strong>' .$form['traDescription']. '</li></br>
                                         <li><strong>Date de début : </strong>' .$form['traStartDate']. '</li></br>
                                         <li><strong>Date de fin : </strong>' .$form['traEndDate']. '</li></br>
-                                        <li><strong>Périodicité : </strong>' .$form['traPeriodicity']. '</li></br>
+                                        <li><strong>Nombre des périodes : </strong>' .$form['traPeriodicity']. '</li></br>
                                         <li><strong>Prix : </strong>' .$form['traPrice']. '.-</li></br>
                                         <li><strong>Lieu : </strong>' .$form['traLocality']. '</li></br>
                                         <li><strong>Nombre de participant min. : </strong>' .$form['traMinParticipants']. '</li></br>
                                         <li><strong>Nombre de participant max. : </strong>' .$form['traMaxParticipants']. '</li></br>
                                         <li><strong>Formateur : </strong><a href="./trainers.php">' .$form['former1']. '</a></li></br>
-                                        <li><a href="inscription.php?id='. $form['idTraining'] .'&a=login" class="btn waves-effect waves-light btn light-blue accent-3"><i class="material-icons right">note_add</i>S\'inscrire</a>
+                                        <li>'.$regButton.'</li>
                                         </br>
                                     </div>
                                 </ul>
@@ -71,9 +81,22 @@ $formations = $gesprojClass->getAllFormations();
                     }
 				?>
             </ul>
-            <a href="#" class="btn tooltipped waves-effect waves-teal btn teal lighten-2" data-position="left" data-delay="50" data-tooltip="En cours de développement"><i class="material-icons right">add</i>Ajouter</a>
-			<a href="./survey.php" class="waves-effect blue white-text waves-light btn"><i class="material-icons left">assignment</i>Évaluer une formation</a>
-        </div>
+			<?php
+				if(isset($_SESSION['user']))
+				{
+					echo('
+							<a href="./survey.php" class="waves-effect blue white-text waves-light btn"><i class="material-icons left">assignment</i>Évaluer une formation</a>
+						');
+						
+						if(isset($_SESSION['admin']))
+						{
+							echo('
+									<a href="#" class="btn tooltipped waves-effect waves-teal btn teal lighten-2" data-position="left" data-delay="50" data-tooltip="En cours de développement"><i class="material-icons right">add</i>Ajouter</a>
+							    ');
+						}
+				}
+			?>
+		</div>
     </div>
 </div>
 
