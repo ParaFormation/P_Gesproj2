@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 ?>
 <?php
 /**
@@ -27,6 +28,7 @@ session_start();
 <main>
 	<!-- Navbar -->
     <?php
+    ob_start();
         include './gesprojClass.php';
         include './navbar.php';
     $newUser = new gesprojClass();
@@ -38,6 +40,7 @@ session_start();
                 <h3>Profil élève</h3></br></br>
                     <div class="row">
                         <form class="col s12 m12" method="POST" onsubmit="return checkPasswords()" action="post/postStudConfig.php">';
+        ob_end_flush();
         if($newUser->checkAlreadyRegistered(1) == false)
         {
             echo'
@@ -92,6 +95,7 @@ session_start();
     }
     else
     {
+        ob_end_flush();
         header('location: ./index.php');
     }
     ?>

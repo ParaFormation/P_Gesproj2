@@ -57,7 +57,7 @@ $formations = $gesprojClass->getAllFormations();
                                         <li><strong>Nombre de participant min. : </strong>' .$form['traMinParticipants']. '</li></br>
                                         <li><strong>Nombre de participant max. : </strong>' .$form['traMaxParticipants']. '</li></br>
                                         <li><strong>Formateur : </strong><a href="./trainers.php">' .$form['former1']. '</a></li></br>
-                                        <li><a href="inscription.php?id='. $form['idTraining'] .'&a=login" class="btn tooltipped waves-effect waves-light btn light-blue accent-3" data-position="right" data-delay="50" data-tooltip="En cours de développement"><i class="material-icons right">note_add</i>S\'inscrire</a>
+                                        <li><a href="inscription.php?id='. $form['idTraining'] .'&a=login" class="btn waves-effect waves-light btn light-blue accent-3"><i class="material-icons right">note_add</i>S\'inscrire</a>
                                         </br>
                                     </div>
                                 </ul>
@@ -69,11 +69,10 @@ $formations = $gesprojClass->getAllFormations();
                         echo($li);;
 
                     }
-
-                    ?>
-
+				?>
             </ul>
-            <a href="addFormationInfos.php" class="btn tooltipped waves-effect waves-teal btn green accent-3" data-position="right" data-delay="50" data-tooltip="En cours de développement"><i class="material-icons right">add</i>Ajouter</a>
+            <a href="#" class="btn tooltipped waves-effect waves-teal btn teal lighten-2" data-position="left" data-delay="50" data-tooltip="En cours de développement"><i class="material-icons right">add</i>Ajouter</a>
+			<a href="./survey.php" class="waves-effect blue white-text waves-light btn"><i class="material-icons left">assignment</i>Évaluer une formation</a>
         </div>
     </div>
 </div>
