@@ -31,11 +31,6 @@ ob_start();
 <body>
 <?php
 ob_start();
-    if(!isset($_SESSION['user']))
-	{
-        ob_end_flush();
-		header('location: ./index.php');
-	}
 
 	include './navbar.php';
 	include './gesprojClass.php';
@@ -58,13 +53,22 @@ ob_end_flush();
 <div class="container">
     <div class="section">
         <h1>Enquête de satisfaction</h1>
+        <?php
+        $class = new gesprojClass();
+
+        $result = $class->checkAlreadyRegistered(1);
+
+        if(isset($_SESSION['user']) && $result == true)
+        {
+            echo'
+
 			<form action="./survey_post.php" method="POST">
 				<div class="row">
 					<div class="col s6 m6">
 					<h5>Formation :</h5>
 						<select name="formation" required>
 						  <option value="" disabled selected >Choisissez la formation à évaluer.</option>
-								<?=$gesprojClass->formationList?>
+								'.$gesprojClass->formationList .'
 						</select>
 					</div>
 				</div>
@@ -226,7 +230,7 @@ ob_end_flush();
 					<li class="divider"></li></br></br>
 					<div class="row">
 						<div class="col s12 m12">
-							<h5><b>7. </b>L'enseignant possèdait bien la matière enseignée.</h5>
+							<h5><b>7. </b>L\'enseignant possèdait bien la matière enseignée.</h5>
 							<p>			  
 							  <input name="group7" value="4" type="radio" id="option30" />
 							  <label for="option30">Tout à fait vrai</label>
@@ -253,7 +257,7 @@ ob_end_flush();
 					<li class="divider"></li></br></br>
 					<div class="row">
 						<div class="col s12 m12">
-							<h5><b>8. </b>J'ai pu enrichir mes connaissances et ma réflexion.</h5>
+							<h5><b>8. </b>J\'ai pu enrichir mes connaissances et ma réflexion.</h5>
 							<p>			  
 							  <input name="group8" value="4" type="radio" id="option35" />
 							  <label for="option35">Tout à fait vrai</label>
@@ -278,7 +282,7 @@ ob_end_flush();
 					</div>
 					<div class="row">
 						<div class="col s12 m12">
-							<h5><b>9. </b>J'ai acquis des outils supplémentaires pour ma pratique quotidienne.</h5>
+							<h5><b>9. </b>J\'ai acquis des outils supplémentaires pour ma pratique quotidienne.</h5>
 							<p>			  
 							  <input name="group9" value="4" type="radio" id="option40" />
 							  <label for="option40">Tout à fait vrai</label>
@@ -303,7 +307,7 @@ ob_end_flush();
 					</div>
 					<div class="row">
 						<div class="col s12 m12">
-							<h5><b>10. </b>J'ai pu prendre une part active au cours.</h5>
+							<h5><b>10. </b>J\'ai pu prendre une part active au cours.</h5>
 							<p>			  
 							  <input name="group10" value="4" type="radio" id="option45" />
 							  <label for="option45">Tout à fait vrai</label>
@@ -362,7 +366,28 @@ ob_end_flush();
 					<div class="row">
 						<button type="submit" id="submit" class="waves-effect waves-light btn"><i class="material-icons right">label outline</i>Soumettre cette évaluation</button>
 					</div>
-			</form>			
+			</form>
+			';
+            }
+            else
+            {
+                echo '
+                          <div class="row center">
+                            <div class="col s12 m12">
+                              <div class="card red">
+                                <div class="card-content white-text">
+                                  <span class="card-title">Page réservée aux élève</span>
+                                  <p>Pour accéder à cette page, vous devez vous connectez en tant que élève.</p>
+                                </div>
+                                <div class="card-action">
+                                  <a href="index.php" class="white-text waves-effect waves-light grey btn">Retour à l\'accueil</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        ';
+            }
+            ?>
         </div>
     </div>
 </div>
