@@ -95,7 +95,7 @@ include './loginModal.php';
                             $inscription = new gesprojClass();
 
                             $result = $inscription->getStudent($_SESSION['user']);
-
+					
                             foreach($result as $row){
                                 $inscription->registerStudentToTraining($_GET['id'], $row['idStudent']);
                             }

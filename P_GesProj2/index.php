@@ -83,6 +83,18 @@ session_start();
 
     <?php
         include './navbar.php';
+
+        if(isset($_GET['need_confirmation']))
+        {
+            echo('<div class="card-panel white-text cyan darken-4 center">
+                         <i class="medium material-icons">info_outline</i></br>
+                         <h4>Votre compte sera bientôt validé, patience !</h4></br>
+                            Vos informations ont bien été enregistrées, mais ce compte formateur
+                            n\'a pas encore été validé par un administrateur.</br></br>
+                        <a href="./index.php" class="waves-effect waves-light btn cyan darken-4"><i class="material-icons right">done</i>J\'ai compris !</a>
+                    </div>
+                </br></br>');
+        }
     ?>
     <div id="index-banner" class="parallax-container">
         <div class="section no-pad-bot">

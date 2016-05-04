@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 ?>
 <?php
 /**
@@ -25,12 +26,16 @@ session_start();
 </head>
 <body>
 	<!-- Navbar -->
-    <?php include './navbar.php';
+    <?php
+    ob_start();
+    include './navbar.php';
+	
     include './gesprojClass.php';
     $newUser = new gesprojClass();
 
-    if(isset($_SESSION['user']))
+    if(isset($_SESSION['user']) && $newUser->checkAlreadyRegistered(1) == false)
     {
+
 	echo'
 	<div class="container">
 		<div class="section">
@@ -106,11 +111,13 @@ session_start();
 				</form>
 			</div>
 		</div>
-	</div>';}
+	</div>';
+    }
     else
     {
-        echo 'Pas connecté !';
-    }
+        ob_end_flush();
+		header('location: ./index.php');
+	}
 
     ?>
  

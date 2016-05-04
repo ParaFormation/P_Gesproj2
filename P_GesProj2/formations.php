@@ -33,10 +33,6 @@ include './loginModal.php';
 $gesprojClass = new gesprojClass();
 $formations = $gesprojClass->getAllFormations();
 
-
-if(isset($_GET['idTraining'])) {
-    $gesprojClass->deleteSection($_GET['idTraining']);
-}
 ?>
 
 <div class="container">
@@ -45,8 +41,18 @@ if(isset($_GET['idTraining'])) {
         <div class="row">
             <ul class="collapsible" data-collapsible="accordion">
                     <?php
+					
+
+					
                     foreach($formations as $form)
                     {
+						$regButton = "";
+					
+						if(isset($_SESSION['user']))
+						{
+							$regButton = '<a href="inscription.php?id='. $form['idTraining'] .'&a=login" class="btn waves-effect waves-light btn light-blue accent-3"><i class="material-icons right">note_add</i>S\'inscrire</a>';
+						}
+						
                         $li = '<li>
                             <div class="collapsible-header"><i class="material-icons">filter_drama</i>' . $form['traName'] . '</div>
                             <div class="collapsible-body">
@@ -55,15 +61,14 @@ if(isset($_GET['idTraining'])) {
                                         <li><strong>Description : </strong>' .$form['traDescription']. '</li></br>
                                         <li><strong>Date de début : </strong>' .$form['traStartDate']. '</li></br>
                                         <li><strong>Date de fin : </strong>' .$form['traEndDate']. '</li></br>
-                                        <li><strong>Périodicité : </strong>' .$form['traPeriodicity']. '</li></br>
+                                        <li><strong>Nombre des périodes : </strong>' .$form['traPeriodicity']. '</li></br>
                                         <li><strong>Prix : </strong>' .$form['traPrice']. '.-</li></br>
                                         <li><strong>Lieu : </strong>' .$form['traLocality']. '</li></br>
                                         <li><strong>Nombre de participant min. : </strong>' .$form['traMinParticipants']. '</li></br>
                                         <li><strong>Nombre de participant max. : </strong>' .$form['traMaxParticipants']. '</li></br>
                                         <li><strong>Formateur : </strong><a href="./trainers.php">' .$form['former1']. '</a></li></br>
-                                        <li><a href="inscription.php?id='. $form['idTraining'] .'&a=login" class="btn tooltipped waves-effect waves-light btn light-blue accent-3" data-position="right" data-delay="50" data-tooltip="En cours de développement"><i class="material-icons right">note_add</i>S\'inscrire</a></li><br>
-                                        <a href="formations.php?idTraining='. $form['idTraining'] .'" class="btn tooltipped waves-effect waves-red btn red accent-3" data-position="right" data-delay="50" data-tooltip="En cours de développement"><i class="material-icons right">delete</i>Supprimer</a>
-                                        <a href="modifyFormation.php?id='. $form['idTraining'] .'" class="btn tooltipped waves-effect waves-orange btn orange accent-3" data-position="right" data-delay="50" data-tooltip="En cours de développement"><i class="material-icons right">mode_edit</i>Modifier</a></li><br>
+                                        <li>'.$regButton.'</li>
+                                        </br>
                                     </div>
                                 </ul>
 
@@ -74,12 +79,24 @@ if(isset($_GET['idTraining'])) {
                         echo($li);;
 
                     }
-
-                    ?>
-
+				?>
             </ul>
-            <a href="addFormationInfos.php" class="btn tooltipped waves-effect waves-teal btn green accent-3" data-position="right" data-delay="50" data-tooltip="En cours de développement"><i class="material-icons right">add</i>Ajouter</a>
-        </div>
+			<?php
+				if(isset($_SESSION['user']))
+				{
+					echo('
+							<a href="./survey.php" class="waves-effect blue white-text waves-light btn"><i class="material-icons left">assignment</i>Évaluer une formation</a>
+						');
+						
+						if(isset($_SESSION['admin']))
+						{
+							echo('
+									<a href="#" class="btn tooltipped waves-effect waves-teal btn teal lighten-2" data-position="left" data-delay="50" data-tooltip="En cours de développement"><i class="material-icons right">add</i>Ajouter</a>
+							    ');
+						}
+				}
+			?>
+		</div>
     </div>
 </div>
 

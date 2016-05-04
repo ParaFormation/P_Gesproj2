@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,23 +26,28 @@ $trainer = new gesprojClass();
 $trainerList = $trainer->getAllTrainers();
 $HTML_List = "";
 
+if(isset($_GET['fkUser'])) {
+    $trainer->DeleteFormer($_GET['fkUser']);
+}
+
 foreach($trainerList as $trainer)
 {
     $HTML_List = $HTML_List .  '<li>
-                                    <div class="collapsible-header"><i class="material-icons">filter_drama</i>' . $trainer['forFirstName']. ' ' . $trainer['forLastName'] . '</div>
+                                    <div class="collapsible-header"><i class="material-icons">filter_drama</i>' . $trainer['forFirstname']. ' ' . $trainer['forLastname'] . '</div>
                                     <div class="collapsible-body">
                                         <ul></br>
                                             <div class="margin-ul">
                                                 <li><strong>Email : </strong>' .$trainer['forEmail']. '</li></br>
                                                 <li><strong>Téléphone : </strong>' .$trainer['forPhone']. '</li></br>
                                                 <li><strong>Qualifications : </strong>' .$trainer['forQualifications']. '</li></br>
-                                                <li><strong>Formations : </strong><a href="./formations.php">'.$trainer['traName'].'</a></li></br>
+                                                <a href="trainers.php?fkUser='. $trainer['fkUser'] .'" class="btn waves-effect waves-red btn red accent-3"><i class="material-icons right">delete</i>Supprimer</a><br>
+                                                </br>
                                             </div>
                                         </ul>
                                     </div>
                                 </li>';
 }
-
+ob_end_flush();
 ?>
 
 <div class="container">
