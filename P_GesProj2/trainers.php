@@ -16,7 +16,6 @@ ob_start();
     <?php include'./gesprojClass.php'; ?>
 </head>
 
-<body>
 <?php
 include './navbar.php';
 
@@ -26,9 +25,6 @@ $trainer = new gesprojClass();
 $trainerList = $trainer->getAllTrainers();
 $HTML_List = "";
 
-if(isset($_GET['fkUser'])) {
-    $trainer->DeleteFormer($_GET['fkUser']);
-}
 
 foreach($trainerList as $trainer)
 {
@@ -40,7 +36,6 @@ foreach($trainerList as $trainer)
                                                 <li><strong>Email : </strong>' .$trainer['forEmail']. '</li></br>
                                                 <li><strong>Téléphone : </strong>' .$trainer['forPhone']. '</li></br>
                                                 <li><strong>Qualifications : </strong>' .$trainer['forQualifications']. '</li></br>
-                                                <a href="trainers.php?fkUser='. $trainer['fkUser'] .'" class="btn waves-effect waves-red btn red accent-3"><i class="material-icons right">delete</i>Supprimer</a><br>
                                                 </br>
                                             </div>
                                         </ul>
@@ -68,4 +63,4 @@ include 'footer.php';
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="./js/materialize.js"></script>
 <script type="text/javascript" src="./js/init.js"></script>
-</body>
+</html>
