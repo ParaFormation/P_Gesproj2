@@ -2,10 +2,10 @@
 /**
  * User: bijelical
  * Date: 25.04.2016
- * Summary: 
+ * Summary:
  */
 
-    session_start();
+session_start();
 
 ?>
 
@@ -22,8 +22,6 @@
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <?php include './gesprojClass.php'; ?>
 </head>
-
-<body>
 <?php
 include './navbar.php';
 
@@ -127,13 +125,13 @@ include './loginModal.php';
                                 <a href="inscription.php?id=' . $_GET['id'] . '&a=done" class="waves-effect waves-light blue btn right"><i class="material-icons right">label_outline</i>Terminer</a>
                                 </div>';
 
-                                $inscription = new gesprojClass();
+                        $inscription = new gesprojClass();
 
-                                $result = $inscription->getStudent($_SESSION['user']);
+                        $result = $inscription->getStudent($_SESSION['user']);
 
-                                foreach($result as $row){
-                                    $inscription->registerStudentToTraining($_GET['id'], $row['idStudent']);
-                                }
+                        foreach($result as $row){
+                            $inscription->registerStudentToTraining($_GET['id'], $row['idStudent']);
+                        }
 
                     }
                     if($_GET['a'] == 'done')
@@ -143,7 +141,7 @@ include './loginModal.php';
                                 <div class="col s12 m12">
                                   <div class="card grey lighten-3">
                                     <div class="card-content black-text">
-                                      <span class="card-title">Inscription réussi</span>
+                                      <span class="card-title">Inscription réussie</span>
                                       <p>Vous avez été inscrit à notre formation. Nous vous en remercions.</p>
                                     </div>
                                     <div class="card-action">
@@ -190,4 +188,4 @@ include 'footer.php';
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.js"></script>
 <script type="text/javascript" src="js/init.js"></script>
-</body>
+</html>
