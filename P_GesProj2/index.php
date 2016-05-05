@@ -25,60 +25,71 @@ session_start();
 </head>
 <body>
     <?php
-        if(isset($_GET['resINS']) && ($_GET['resINS'] == 0))
+        if(isset($_GET['success_survey']))
         {
             echo '<script type="text/javascript">'
-            , 'connexionOK("Inscription réussie !");'
+            , 'successMessage("Merci pour votre évaluation !");'
             , '</script>'
             ;
         }
         else {
-            if (isset($_GET['resOFF']) && ($_GET['resOFF']) == 0)
-            {
+            if (isset($_GET['resINS']) && ($_GET['resINS'] == 0)) {
                 echo '<script type="text/javascript">'
-                , 'connexionOK("Déconnexion réussie !");'
+                , 'successMessage("Inscription réussie !");'
                 , '</script>';
-            }
-            else
-            {
-                if (isset($_GET['resOFF']) && ($_GET['resOFF']) == 1) {
-                    echo '<script type="text/javascript">'
-                    , 'connexionKO("Déconnexion non réussie !");'
-                    , '</script>';
                 }
-                else
-                {
-                    if(isset($_GET['resON']) && ($_GET['resON']) == 0)
-                    {
+                else {
+                    if (isset($_GET['configOK'])) {
                         echo '<script type="text/javascript">'
-                        , 'connexionOK("Connexion réussie !");'
-                        , '</script>'
-                        ;
-                    }
-                    else
-                    {
-                        if(isset($_GET['resON']) && ($_GET['resON']) == 1)
+                        , 'successMessage("Configuration du profil réussie !");'
+                        , '</script>';
+                    } else {
+                        if (isset($_GET['password_changed']))
                         {
                             echo '<script type="text/javascript">'
-                            , 'connexionKO("Mot de passe erroné !");'
-                            , '</script>'
-                            ;
-                        }
-                        else
-                        {
-                            if(isset($_GET['resON']) && ($_GET['resON']) == 2)
+                            , 'successMessage("Mot de passe changé avec succès !");'
+                            , '</script>';
+                        } else {
+                            if (isset($_GET['passwordChangeKO']))
                             {
                                 echo '<script type="text/javascript">'
-                                , 'connexionKO("Utilisateur inexistant !");'
-                                , '</script>'
-                                ;
+                                , 'errorMessage("Erreur lors du changement de mot de passe !");'
+                                , '</script>';
+                            } else {
+                                if (isset($_GET['resOFF']) && ($_GET['resOFF']) == 0) {
+                                    echo '<script type="text/javascript">'
+                                    , 'successMessage("Déconnexion réussie !");'
+                                    , '</script>';
+                                } else {
+                                    if (isset($_GET['resOFF']) && ($_GET['resOFF']) == 1) {
+                                        echo '<script type="text/javascript">'
+                                        , 'errorMessage("Déconnexion non réussie !");'
+                                        , '</script>';
+                                    } else {
+                                        if (isset($_GET['resON']) && ($_GET['resON']) == 0) {
+                                            echo '<script type="text/javascript">'
+                                            , 'successMessage("Connexion réussie !");'
+                                            , '</script>';
+                                        } else {
+                                            if (isset($_GET['resON']) && ($_GET['resON']) == 1) {
+                                                echo '<script type="text/javascript">'
+                                                , 'errorMessage("Mot de passe erroné !");'
+                                                , '</script>';
+                                            } else {
+                                                if (isset($_GET['resON']) && ($_GET['resON']) == 2) {
+                                                    echo '<script type="text/javascript">'
+                                                    , 'errorMessage("Utilisateur inexistant !");'
+                                                    , '</script>';
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
-        }
-
     ?>
 
     <?php
