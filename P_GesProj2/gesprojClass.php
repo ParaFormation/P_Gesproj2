@@ -486,7 +486,7 @@ class gesprojClass
     public function getAllTrainers()
     {
         //Prepare the select request
-        $stmt = $this->dbh->prepare('SELECT idformer, forFirstname, forLastname, forAddress, forEmail, forPhone, forQualifications, fkUser FROM t_former GROUP BY idFormer');
+        $stmt = $this->dbh->prepare('SELECT idformer, forFirstname, forLastname, forAddress, forEmail, forPhone, forQualifications, fkUser FROM t_former,t_user WHERE fkUser = idUser GROUP BY idFormer');
 
         //Execute the request
         $stmt->execute();
@@ -543,7 +543,7 @@ class gesprojClass
                 //Execute the query
                 $stmt->execute();
 
-                header("location:../index.php");
+                header("location:../index.php?configOK");
             }
         }
         else {
@@ -698,11 +698,9 @@ class gesprojClass
         else
         {
             //Redirect to the form page
-            header('location: ../addTeacherInfos.php?post_error');
+            header('location: ../index.php?passwordChangeKO');
         }
 
-        //Kill the connection
-        unset($this->dbh);
     }
 
     /**
@@ -731,8 +729,24 @@ class gesprojClass
     {
         $deleteQuery = $this->dbh->prepare('DELETE FROM t_user WHERE idUser = '. $ID . '');
         $deleteQuery->execute();
+        $deleteQuery2 = $this->dbh->prepare('DELETE FROM t_former WHERE fkUser = '. $ID .'');
+        $deleteQuery2->execute();
 
         header('location:./trainers.php');
+    }
+
+    /**
+     * @param $ID
+     * delete former
+     */
+    public function DenyFormer($ID)
+    {
+        $deleteQuery = $this->dbh->prepare('DELETE FROM t_user WHERE idUser = '. $ID . '');
+        $deleteQuery->execute();
+        $deleteQuery2 = $this->dbh->prepare('DELETE FROM t_former WHERE fkUser = '. $ID .'');
+        $deleteQuery2->execute();
+
+        header('location:../formerConfirmPage.php');
     }
 
     /**
@@ -765,6 +779,22 @@ class gesprojClass
     {
         $sql = ('SELECT idStudent FROM t_student, t_user WHERE useUsername = ? AND fkUser = idUser');
         $stmt = $this->dbh->prepare($sql);
+        $stmt->bindParam(1,$name);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
+    /**
+     * @param $name: Th ename of the user
+     * @return array: The result of the query
+     */
+    public function getAllStudentInformations($name)
+    {
+        $sql = ('SELECT * FROM t_student, t_user WHERE useUsername = ? AND fkUser = idUser');
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->bindParam(1,$name);
         $stmt->bindParam(1,$name);
         $stmt->execute();
 
@@ -826,7 +856,9 @@ class gesprojClass
 					surQuestion8Note,
 					surQuestion9Note,
 					surQuestion10Note,
-					surQuestion11Note
+					surQuestion11Note,
+					surComment,
+					fkTraining
 					) 
 					VALUES 
 					(
@@ -837,13 +869,13 @@ class gesprojClass
 					:surQuestion4Note,
 					:surQuestion5Note,
 					:surQuestion6Note,
-					:surComment,
-					:fkTraining,
 					:surQuestion7Note,
 					:surQuestion8Note,
 					:surQuestion9Note,
 					:surQuestion10Note,
-					:surQuestion11Note
+					:surQuestion11Note,
+					:surComment,
+					:fkTraining
 					)";
 
 			//Prepare the query $newSurvey
@@ -868,6 +900,7 @@ class gesprojClass
 
 			//Execute the query
 			$stmt->execute();
+
 
 			header("location: ./index.php?success_survey");
 		
