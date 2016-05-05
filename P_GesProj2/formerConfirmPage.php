@@ -3,7 +3,7 @@ session_start();
 //Redirect to index if user isn't logged
 if(!isset($_SESSION['user']))
 {
-	header('location: ./index.php');
+    header('location: ./index.php');
 }
 ?>
 <?php
@@ -29,7 +29,6 @@ if(!isset($_SESSION['user']))
     <?php include'./gesprojClass.php'; ?>
 </head>
 
-<body>
 <?php
 include './navbar.php';
 
@@ -79,4 +78,4 @@ include 'footer.php';
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="./js/materialize.js"></script>
 <script type="text/javascript" src="./js/init.js"></script>
-</body>
+</html>

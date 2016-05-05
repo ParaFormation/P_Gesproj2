@@ -25,12 +25,12 @@ session_start();
     <script src="./js/materialize.js"></script>
 </head>
 
-<body>
+
 <?php
 if(isset($_GET['resINS']) && ($_GET['resINS']) == 1)
 {
     echo '<script type="text/javascript">'
-    , 'connexionKO("Cet utilisateur existe déjà !");'
+    , 'successMessage("Cet utilisateur existe déjà !");'
     , '</script>'
     ;
 }
@@ -89,7 +89,5 @@ include './loginModal.php';
 	include 'footer.php';
 ?>
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="./js/materialize.js"></script>
 <script type="text/javascript" src="./js/init.js"></script>
-</body>
+</html>

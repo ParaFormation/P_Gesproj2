@@ -17,7 +17,6 @@
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
-<body>
 <?php
 include './navbar.php';
 ?>
@@ -44,5 +43,4 @@ include 'footer.php';
 <script src="js/materialize.js"></script>
 <script src="js/init.js"></script>
 
-</body>
 </html>
