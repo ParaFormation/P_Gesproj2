@@ -28,25 +28,24 @@ ob_start();
     <script src="./js/materialize.js"></script>
 </head>
 
-<body>
 <?php
 ob_start();
 
-	include './navbar.php';
-	include './gesprojClass.php';
-	include './loginModal.php';
+include './navbar.php';
+include './gesprojClass.php';
+include './loginModal.php';
 
-	$gesprojClass = new gesprojClass();
-	$formations = $gesprojClass->getAllFormations();
+$gesprojClass = new gesprojClass();
+$formations = $gesprojClass->getAllFormations();
 
 
-	//format the sections in a combolist
-	foreach($formations as $formation)
-	{			
-		//Store all the sections in a string with the html <option> tag
-		$gesprojClass->formationList .= ('<option value="' . $formation["idTraining" ]. '">' . $formation["traName"] . ' </option>');
-		
-	}
+//format the sections in a combolist
+foreach($formations as $formation)
+{
+    //Store all the sections in a string with the html <option> tag
+    $gesprojClass->formationList .= ('<option value="' . $formation["idTraining" ]. '">' . $formation["traName"] . ' </option>');
+
+}
 ob_end_flush();
 ?>
 
@@ -61,13 +60,12 @@ ob_end_flush();
         if(isset($_SESSION['user']) && $result == true)
         {
             echo'
-
-			<form action="./survey_post.php" method="POST">
+			<form name="surveyForm" action="./survey_post.php" method="POST">
 				<div class="row">
 					<div class="col s6 m6">
 					<h5>Formation :</h5>
 						<select name="formation" required>
-						  <option value="" disabled selected >Choisissez la formation à évaluer.</option>
+						  <option value="" disabled selected>Choisissez la formation à évaluer:</option>
 								'.$gesprojClass->formationList .'
 						</select>
 					</div>
@@ -364,14 +362,14 @@ ob_end_flush();
 						    </div>
 					  </div>
 					<div class="row">
-						<button type="submit" id="submit" class="waves-effect waves-light btn"><i class="material-icons right">label outline</i>Soumettre cette évaluation</button>
+						<button type="submit" id="submit" onclick="return checkSurvey(this)" class="waves-effect waves-light btn"><i class="material-icons right">label outline</i>Soumettre cette évaluation</button>
 					</div>
 			</form>
 			';
-            }
-            else
-            {
-                echo '
+        }
+        else
+        {
+            echo '
                           <div class="row center">
                             <div class="col s12 m12">
                               <div class="card red">
@@ -386,9 +384,8 @@ ob_end_flush();
                             </div>
                           </div>
                         ';
-            }
-            ?>
-        </div>
+        }
+        ?>
     </div>
 </div>
 
@@ -398,4 +395,4 @@ include 'footer.php';
 
 <script> $(document).ready(function() {$('select').material_select();})</script>
 <script type="text/javascript" src="./js/init.js"></script>
-</body>
+</html>
