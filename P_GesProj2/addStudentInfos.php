@@ -24,8 +24,6 @@ ob_start();
     <script type="text/javascript" src="./js/jsGesProj.js"></script>
     <script src="./js/materialize.js"></script>
 </head>
-<body>
-<main>
 	<!-- Navbar -->
     <?php
     ob_start();
@@ -106,9 +104,5 @@ ob_start();
     ?>
 
   <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
-    </main>
-  </body>
 </html>
