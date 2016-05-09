@@ -72,7 +72,7 @@ ob_start();
 
             $result = $displayRegisteredTraining->getRegisteredFormations($getUserID);
 
-            if(isset($result))
+            if(!empty($result))
             {
                 echo'
                 <div class="row">
