@@ -12,8 +12,8 @@ class gesprojClass
     public $qualifications;
     public $email;
     public $phone;
-	public $formationList;	
-	public $valQ1;
+    public $formationList;	
+    public $valQ1;
     public $valQ2;
     public $valQ3;
     public $valQ4;
@@ -468,7 +468,7 @@ class gesprojClass
     public function getAllTrainers()
     {
         //Prepare the select request
-        $stmt = $this->dbh->prepare('SELECT traName,forLastname,forFirstname,forEmail,forPhone,forQualifications,idFormer,idTraining FROM t_training RIGHT JOIN t_former ON t_training.fkFormer1 = t_former.idFormer');
+        $stmt = $this->dbh->prepare('SELECT traName,idUser,fkUser,forLastname,forFirstname,forEmail,forPhone,forQualifications,idFormer,idTraining FROM t_user,t_training RIGHT JOIN t_former ON t_training.fkFormer1 = t_former.idFormer WHERE t_former.fkUser = t_user.idUser AND t_user.isTeacherValidated = 1');
 
         //Execute the request
         $stmt->execute();
