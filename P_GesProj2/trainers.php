@@ -25,9 +25,15 @@ $trainer = new gesprojClass();
 $trainerList = $trainer->getAllTrainers();
 $HTML_List = "";
 
-
 foreach($trainerList as $trainer)
 {
+    $formation = $trainer['traName'];
+
+    if($formation == "")
+    {
+        $formation = "Pas de formation";
+    }
+
     $HTML_List = $HTML_List .  '<li>
                                     <div class="collapsible-header"><i class="material-icons">filter_drama</i>' . $trainer['forFirstname']. ' ' . $trainer['forLastname'] . '</div>
                                     <div class="collapsible-body">
@@ -35,6 +41,7 @@ foreach($trainerList as $trainer)
                                             <div class="margin-ul">
                                                 <li><strong>Email : </strong>' .$trainer['forEmail']. '</li></br>
                                                 <li><strong>Téléphone : </strong>' .$trainer['forPhone']. '</li></br>
+                                                <li><strong>Formation : </strong>' .$formation. '</li></br>
                                                 <li><strong>Qualifications : </strong>' .$trainer['forQualifications']. '</li></br>
                                                 </br>
                                             </div>
