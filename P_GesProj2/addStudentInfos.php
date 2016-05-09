@@ -6,31 +6,30 @@ ob_start();
 /**
  * User: bijelical
  * Date: 21.03.2016
- * Summary: 
+ * Summary:
  */
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>Infos élèves - P_GesProj2</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <title>Infos élèves - P_GesProj2</title>
 
-  <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="./js/jsGesProj.js"></script>
     <script src="./js/materialize.js"></script>
 </head>
 <body>
-<main>
-	<!-- Navbar -->
+    <!-- Navbar -->
     <?php
     ob_start();
-        include './gesprojClass.php';
-        include './navbar.php';
+    include './gesprojClass.php';
+    include './navbar.php';
     $newUser = new gesprojClass();
     if(isset($_SESSION['user']) && ($newUser->checkAlreadyRegistered(2) == false))
     {
@@ -83,7 +82,7 @@ ob_start();
                     </div >
                 </div >';
         }
-                        echo'
+        echo'
                         <button class="btn waves-effect waves-light blue" type="submit" name="action">Enregistrer les informations
                             <i class="material-icons right">done</i>
                         </button>
@@ -100,15 +99,12 @@ ob_start();
     }
     ?>
 
-	<!-- Footer -->   
+    <!-- Footer -->
     <?php
-        include 'footer.php';
+    include 'footer.php';
     ?>
 
-  <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
-    </main>
-  </body>
+    <!--  Scripts-->
+    <script src="js/init.js"></script>
+</body>
 </html>

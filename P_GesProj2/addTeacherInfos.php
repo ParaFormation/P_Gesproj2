@@ -6,7 +6,7 @@ ob_start();
 /**
  * User: bijelical
  * Date: 21.03.2016
- * Summary: 
+ * Summary:
  */
 ?>
 <!DOCTYPE html>
@@ -25,26 +25,26 @@ ob_start();
     <script src="./js/materialize.js"></script>
 </head>
 <body>
-	<!-- Navbar -->
-    <?php
-    ob_start();
-    include './navbar.php';
-	
-    include './gesprojClass.php';
-    $newUser = new gesprojClass();
+<!-- Navbar -->
+<?php
+ob_start();
+include './navbar.php';
 
-    if(isset($_SESSION['user']) && $newUser->checkAlreadyRegistered(1) == false)
-    {
+include './gesprojClass.php';
+$newUser = new gesprojClass();
 
-	echo'
+if(isset($_SESSION['user']) && $newUser->checkAlreadyRegistered(1) == false)
+{
+
+    echo'
 	<div class="container">
 		<div class="section">
 			<h3>Profil formateur</h3></br></br>
 				<div class="row">
 					<form class="col s12 m12" method="POST" onsubmit="return checkPasswords()" action="post/postTeachConfig.php">';
-					if($newUser->checkAlreadyRegistered(2) == false)
-					{
-                        echo'
+    if($newUser->checkAlreadyRegistered(2) == false)
+    {
+        echo'
 						<div class="row">
 							<div class="input-field col s6 m6">
 								<i class="material-icons prefix">account_circle</i>
@@ -85,9 +85,9 @@ ob_start();
                             </div>
 							  </br></br></br>
 					   </div>';
-					   }
-                        if($newUser->checkAlreadyRegistered(2) == true) {
-                            echo'
+    }
+    if($newUser->checkAlreadyRegistered(2) == true) {
+        echo'
                             <h5> Changer le mot de passe </h5 >
 							<div class="row" >
 								<div class="input-field col s12 m6" >
@@ -103,8 +103,8 @@ ob_start();
 									<label for="passwordConfirm" > Confirmation du nouveau mot de passe </label >
 								</div >
 						    </div >';
-                        }
-                    echo'
+    }
+    echo'
 					<button class="btn waves-effect waves-light blue" type="submit" name="action">Enregistrer les informations
 						<i class="material-icons right">done</i>
 					</button>
@@ -112,25 +112,20 @@ ob_start();
 			</div>
 		</div>
 	</div>';
-    }
-    else
-    {
-        ob_end_flush();
-		header('location: ./index.php');
-	}
+}
+else
+{
+    ob_end_flush();
+    header('location: ./index.php');
+}
 
-    ?>
- 
-
-	<!-- Footer -->   
-    <?php include 'footer.php';?>
-    
+?>
 
 
-  <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
+<!-- Footer -->
+<?php include 'footer.php';?>
 
-  </body>
+<script src="js/init.js"></script>
+
+</body>
 </html>
