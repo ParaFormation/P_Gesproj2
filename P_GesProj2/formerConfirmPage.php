@@ -55,8 +55,8 @@ include './loginModal.php';
                                         <li><strong>Email : </strong>' .$form['forEmail']. '</li></br>
                                         <li><strong>Téléphone : </strong>' .$form['forPhone']. '</li></br>
                                         <li><strong>Qualifications : </strong>' .$form['forQualifications']. '</li></br>
-                                        <li><a href="./post/postConfirmFormer.php?ID='.$form['fkUser'].'"  class="waves-effect waves-light btn  light-green" ><i class="material-icons right">done</i>Confirmer</a></li>
-                                        <li><a href="./post/postDeleteFormer.php?ID='.$form['fkUser'].'" class="waves-effect waves-light btn red accent-4"><i class="material-icons right">delete</i>Supprimer</a></li><br>
+                                        <li><a href="./post/postConfirmFormer.php?ID='.$form['fkUser'].'"  class="waves-effect waves-light btn  light-green" ><i class="material-icons right">done</i>Confirmer</a>
+                                        <a href="./post/postDeleteFormer.php?ID='.$form['fkUser'].'" class="waves-effect waves-light btn red accent-4"><i class="material-icons right">delete</i>Supprimer</a></li><br>
                                     </div>
                                 </ul>
                             </div>
