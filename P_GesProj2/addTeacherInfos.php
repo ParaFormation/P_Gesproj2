@@ -24,6 +24,7 @@ ob_start();
     <script type="text/javascript" src="./js/jsGesProj.js"></script>
     <script src="./js/materialize.js"></script>
 </head>
+<body>
 	<!-- Navbar -->
     <?php
     ob_start();
@@ -47,39 +48,39 @@ ob_start();
 						<div class="row">
 							<div class="input-field col s6 m6">
 								<i class="material-icons prefix">account_circle</i>
-								<input name="firstname" id="firstname" type="text" class="validate" required>
+								<input name="firstname" id="firstname" type="text"  pattern="^[a-zA-Z-]*" class="validate" required>
 								<label for="firstname">Prénom</label>
 							</div>
 							<div class="input-field col s6 m6">
-								<input id="lastname" name="lastname" type="text" class="validate" required>
+								<input id="lastname" name="lastname" type="text"  pattern="^[a-zA-Z-]*" class="validate" required>
 								<label for="lastname">Nom de famille</label>
 							</div>
 						</div>
 						<div class="row">
 							<div class="input-field col s12 m12">
 								<i class="material-icons prefix">room</i>
-								<input id="address" name="address" type="text" class="validate" required>
+								<input id="address" name="address" type="text" pattern="^([a-zA-Z].*)\d" class="validate" required>
 								<label for="address">Adresse + NPA</label>
 							</div>
 						</div>
 						<div class="row">
 							<div class="input-field col s12 m12">
 								<i class="material-icons prefix">email</i>
-								<input id="email" name="email" type="text" class="validate" required>
+								<input id="email" name="email" type="email" class="validate" required>
 								<label for="email">Adresse email</label>
 							</div>
 						</div>
 						<div class="row">
 							<div class="input-field col s12 m12">
 								<i class="material-icons prefix">phone</i>
-								<input id="phone" name="phone" type="text" class="validate" required>
+								<input id="phone" name="phone" type="number"  class="validate" required>
 								<label for="phone">N° de téléphone</label>
 							</div>
 						</div>
 						<div class="row">
 							<div class="input-field col s12 m12">
 							  <i class="material-icons prefix">mode_edit</i>
-							  <textarea name="qualifications"id="qualifications" class="materialize-textarea"></textarea>
+							  <textarea name="qualifications"id="qualifications" class="materialize-textarea" required></textarea>
 							  <label for="qualifications">Qualifications</label>
                             </div>
 							  </br></br></br>
@@ -127,6 +128,9 @@ ob_start();
 
 
   <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
 
+  </body>
 </html>

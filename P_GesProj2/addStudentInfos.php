@@ -24,6 +24,8 @@ ob_start();
     <script type="text/javascript" src="./js/jsGesProj.js"></script>
     <script src="./js/materialize.js"></script>
 </head>
+<body>
+<main>
 	<!-- Navbar -->
     <?php
     ob_start();
@@ -45,18 +47,18 @@ ob_start();
                 <div class="row">
                     <div class="input-field col s6 m6">
                         <i class="material-icons prefix">account_circle</i>
-                        <input name="firstname" id="firstname" type="text" class="validate" required>
+                        <input name="firstname" id="firstname" type="text" class="validate"  pattern="^[a-zA-Z-]*" required>
                         <label for="firstname">Prénom</label>
                     </div>
                     <div class="input-field col s6 m6">
-                        <input id="lastname" name="lastname" type="text" class="validate" required>
+                        <input id="lastname" name="lastname" type="text" class="validate" pattern="^[a-zA-Z-]*" required>
                         <label for="lastname">Nom de famille</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m12">
                         <i class="material-icons prefix">room</i>
-                        <input id="address" name="address" type="text" class="validate" required>
+                        <input id="address" name="address" type="text" pattern="^([a-zA-Z].*)\d" class="validate" required>
                         <label for="address">Adresse + NPA</label>
                     </div>
                     </br></br></br>
@@ -104,5 +106,9 @@ ob_start();
     ?>
 
   <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
+    </main>
+  </body>
 </html>
