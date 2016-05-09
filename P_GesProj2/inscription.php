@@ -64,7 +64,7 @@ include './loginModal.php';
                             foreach($student as $row)
                             {
                                 echo ($row['stuFirstname'] . ' ' . $row['stuLastname'] . '<br />');
-                                echo($row['stuAdress'] . '<br />');
+                                echo($row['stuAddress'] . '<br />');
                                 echo('<a href="inscription.php?id=' . $_GET['id'] . '&a=payment" class="waves-effect waves-light blue btn right"><i class="material-icons right">label_outline</i>Suivant</a>');
                             }
                         }
@@ -109,7 +109,7 @@ include './loginModal.php';
                         foreach($student as $row)
                         {
                             $name = ($row['stuFirstname'] . ' ' . $row['stuLastname'] . '<br />');
-                            $address = ($row['stuAdress'] . '<br />');
+                            $address = ($row['stuAddress'] . '<br />');
                         }
 
                         echo '<div class="s12 m6"><b>Information du participant:</b><br />'. $name . $address . ' <br />
