@@ -448,8 +448,12 @@ class gesprojClass
      */
     public function getAllFormations()
     {
-        //Prepare the select request
-        $stmt = $this->dbh->prepare('SELECT forLastName AS former1, fkFormer2 AS form2,idTraining,traName,traDescription,traStartDate,traEndDate,traPeriodicity,traPrice,traLocality,traMinParticipants,traMaxParticipants FROM t_former,t_training WHERE fkFormer1 = idFormer ORDER BY idTraining');
+        //Prepare the select request (by Romain et Theo)
+        $stmt = $this->dbh->prepare('SELECT
+		fkFormer2 AS form2ID, forLastName AS former1,
+		(SELECT forLastName FROM t_former, t_training WHERE form2ID = idFormer LIMIT 1) AS former2,
+		idTraining,traName,traDescription,traStartDate,traEndDate,traPeriodicity,traPrice,traLocality,traMinParticipants,traMaxParticipants
+		FROM t_training, t_former WHERE fkFormer1 = idFormer GROUP BY traName ORDER BY idTraining');
 
         //Execute the request
         $stmt->execute();
@@ -468,7 +472,7 @@ class gesprojClass
     {
         //Prepare the select request
         //Request that select all the teachers validated with a formation or not
-        $stmt = $this->dbh->prepare('SELECT traName,idUser,fkUser,forLastname,forFirstname,forEmail,forPhone,forQualifications,idFormer,idTraining FROM t_user,t_training RIGHT JOIN t_former ON t_training.fkFormer1 = t_former.idFormer WHERE t_former.fkUser = t_user.idUser AND t_user.isTeacherValidated = 1');
+        $stmt = $this->dbh->prepare('SELECT traName,idUser,fkUser,forLastname,forFirstname,forAddress,forEmail,forPhone,forQualifications,idFormer,idTraining FROM t_user,t_training RIGHT JOIN t_former ON t_training.fkFormer1 = t_former.idFormer WHERE t_former.fkUser = t_user.idUser AND t_user.isTeacherValidated = 1');
 
         //Execute the request
         $stmt->execute();

@@ -39,6 +39,7 @@ foreach($trainerList as $trainer)
                                     <div class="collapsible-body">
                                         <ul></br>
                                             <div class="margin-ul">
+                                                <li><strong>Addresse : </strong>' .$trainer['forAddress']. '</li></br>
                                                 <li><strong>Email : </strong>' .$trainer['forEmail']. '</li></br>
                                                 <li><strong>Téléphone : </strong>' .$trainer['forPhone']. '</li></br>
                                                 <li><strong>Formation : </strong>' .$formation. '</li></br>

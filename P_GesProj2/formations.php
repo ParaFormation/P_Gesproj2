@@ -51,21 +51,21 @@ $formations = $gesprojClass->getAllFormations();
 						{
 							$regButton = '<a href="inscription.php?id='. $form['idTraining'] .'&a=login" class="btn waves-effect waves-light btn light-blue accent-3"><i class="material-icons right">note_add</i>S\'inscrire</a>';
 						}
-						
+
                         $li = '<li>
                             <div class="collapsible-header"><i class="material-icons">filter_drama</i>' . $form['traName'] . '</div>
                             <div class="collapsible-body">
                                 <ul></br>
                                     <div class="margin-ul">
-                                        <li><strong>Description : </strong>' .$form['traDescription']. '</li></br>
-                                        <li><strong>Date de début : </strong>' .$form['traStartDate']. '</li></br>
-                                        <li><strong>Date de fin : </strong>' .$form['traEndDate']. '</li></br>
-                                        <li><strong>Nombre des périodes : </strong>' .$form['traPeriodicity']. '</li></br>
-                                        <li><strong>Prix : </strong>' .$form['traPrice']. '.-</li></br>
-                                        <li><strong>Lieu : </strong>' .$form['traLocality']. '</li></br>
-                                        <li><strong>Nombre de participant min. : </strong>' .$form['traMinParticipants']. '</li></br>
-                                        <li><strong>Nombre de participant max. : </strong>' .$form['traMaxParticipants']. '</li></br>
-                                        <li><strong>Formateur : </strong><a href="./trainers.php">' .$form['former1']. '</a></li></br>
+                                        <li><b>Description : </b>' .$form['traDescription']. '</li></br>
+                                        <li><b>Date de début : </b>' .$form['traStartDate']. '</li></br>
+                                        <li><b>Date de fin : </b>' .$form['traEndDate']. '</li></br>
+                                        <li><b>Nombre des périodes : </b>' .$form['traPeriodicity']. '</li></br>
+                                        <li><b>Prix : </b>' .$form['traPrice']. '.-</li></br>
+                                        <li><b>Lieu : </b>' .$form['traLocality']. '</li></br>
+                                        <li><b>Nombre de participant min. : </b>' .$form['traMinParticipants']. '</li></br>
+                                        <li><b>Nombre de participant max. : </b>' .$form['traMaxParticipants']. '</li></br>
+                                        <li><b>Formateurs : </b><a href="./trainers.php">' .$form['former1']. '</a> et <a href="./trainers.php">'.$form['former2'].'</a></li></br>
                                         <li>'.$regButton.'</li>
                                         </br>
                                     </div>
