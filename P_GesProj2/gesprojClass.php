@@ -12,8 +12,8 @@ class gesprojClass
     public $qualifications;
     public $email;
     public $phone;
-    public $formationList;	
-    public $valQ1;
+	public $formationList;	
+	public $valQ1;
     public $valQ2;
     public $valQ3;
     public $valQ4;
@@ -370,7 +370,6 @@ class gesprojClass
             if(password_verify($password,$dbPassword))
             {
                 $_SESSION['user'] = $username;
-
                 header("location:index.php?resON=0");
             }
             else
@@ -463,21 +462,44 @@ class gesprojClass
     }
 
     /**
-    * Display trainers in the html
-    */
+     * Display trainers in the html
+     */
     public function getAllTrainers()
     {
         //Prepare the select request
+        //Request that select all the teachers validated with a formation or not
         $stmt = $this->dbh->prepare('SELECT traName,idUser,fkUser,forLastname,forFirstname,forEmail,forPhone,forQualifications,idFormer,idTraining FROM t_user,t_training RIGHT JOIN t_former ON t_training.fkFormer1 = t_former.idFormer WHERE t_former.fkUser = t_user.idUser AND t_user.isTeacherValidated = 1');
 
         //Execute the request
         $stmt->execute();
 
+
         //Get the result of the request in an array
         $formers = $stmt->fetchAll();
 
+
         //Return the list
         return $formers;
+    }
+
+    /**
+     * Display all formations where the user is registered
+     * @param $id: The id of the user
+     * @return array: Return the results of the query
+     */
+    public function getRegisteredFormations($id)
+    {
+        //Prepare the select request
+        $stmt = $this->dbh->prepare("SELECT * FROM t_former, t_training, t_inscription LEFT JOIN t_student ON t_inscription.fkStudent = t_student.idStudent WHERE t_student.fkUser='$id' AND fkTraining=idTraining AND fkFormer1 = idFormer");
+
+        //Execute the request
+        $stmt->execute();
+
+        //Get the result of the request in an array
+        $training = $stmt->fetchAll();
+
+        //Return the list
+        return $training;
     }
 
     /**
@@ -739,7 +761,6 @@ class gesprojClass
     {
         $updateQuery = $this->dbh->prepare('UPDATE t_user SET isTeacherValidated = 1 WHERE idUser ='. $ID . '');
         $updateQuery->execute();
-
     }
 
     /**

@@ -94,7 +94,6 @@ session_start();
 
     <?php
         include './navbar.php';
-
         if(isset($_GET['need_confirmation']))
         {
             echo('<div class="card-panel white-text cyan darken-4 center">
