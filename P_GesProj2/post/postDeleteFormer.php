@@ -1,4 +1,7 @@
 <?php
+session_start();
+?>
+<?php
 #Author : voisardth
 #Date : 25.04.2016
 #Summary : delete former
@@ -6,7 +9,7 @@
 include("../gesprojClass.php");
 $gesProjClass = new gesprojClass();
 if(isset($_GET['ID'])) {
-    $gesProjClass->DeleteFormer($_GET['ID']);
+    $gesProjClass->DenyFormer($_GET['ID']);
 }
 else
 {

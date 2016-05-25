@@ -1,4 +1,7 @@
 <?php
+session_start();
+?>
+<?php
 #Author : voisardth
 #Date : 25.04.2016
 #Summary :Comfirmation of Former
